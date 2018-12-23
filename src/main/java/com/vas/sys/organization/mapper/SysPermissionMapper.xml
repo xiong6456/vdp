@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vas.sys.organization.mapper.SysPermissionMapper">
+  <resultMap id="BaseResultMap" type="com.vas.sys.organization.pojo.SysPermission">
+    <id column="fd_id" jdbcType="VARCHAR" property="fdId" />
+    <result column="fd_name" jdbcType="VARCHAR" property="fdName" />
+    <result column="fd_description" jdbcType="VARCHAR" property="fdDescription" />
+    <result column="fd_type" jdbcType="VARCHAR" property="fdType" />
+    <result column="fd_url" jdbcType="VARCHAR" property="fdUrl" />
+    <result column="fd_percode" jdbcType="VARCHAR" property="fdPercode" />
+    <result column="fd_parent_id" jdbcType="VARCHAR" property="fdParentId" />
+    <result column="fd_parent_ids" jdbcType="VARCHAR" property="fdParentIds" />
+    <result column="fd_order" jdbcType="INTEGER" property="fdOrder" />
+    <result column="fd_available" jdbcType="VARCHAR" property="fdAvailable" />
+    <result column="doc_order" jdbcType="BIGINT" property="docOrder" />
+    <result column="doc_creator_id" jdbcType="VARCHAR" property="docCreatorId" />
+    <result column="doc_alteror_id" jdbcType="VARCHAR" property="docAlterorId" />
+    <result column="doc_create_time" jdbcType="TIMESTAMP" property="docCreateTime" />
+    <result column="doc_alter_time" jdbcType="TIMESTAMP" property="docAlterTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_permission
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.vas.sys.organization.pojo.SysPermission">
+    insert into sys_permission (fd_id, fd_name, fd_description, 
+      fd_type, fd_url, fd_percode, 
+      fd_parent_id, fd_parent_ids, fd_order, 
+      fd_available, doc_order, doc_creator_id, 
+      doc_alteror_id, doc_create_time, doc_alter_time
+      )
+    values (#{fdId,jdbcType=VARCHAR}, #{fdName,jdbcType=VARCHAR}, #{fdDescription,jdbcType=VARCHAR}, 
+      #{fdType,jdbcType=VARCHAR}, #{fdUrl,jdbcType=VARCHAR}, #{fdPercode,jdbcType=VARCHAR}, 
+      #{fdParentId,jdbcType=VARCHAR}, #{fdParentIds,jdbcType=VARCHAR}, #{fdOrder,jdbcType=INTEGER}, 
+      #{fdAvailable,jdbcType=VARCHAR}, #{docOrder,jdbcType=BIGINT}, #{docCreatorId,jdbcType=VARCHAR}, 
+      #{docAlterorId,jdbcType=VARCHAR}, #{docCreateTime,jdbcType=TIMESTAMP}, #{docAlterTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.vas.sys.organization.pojo.SysPermission">
+    update sys_permission
+    set fd_name = #{fdName,jdbcType=VARCHAR},
+      fd_description = #{fdDescription,jdbcType=VARCHAR},
+      fd_type = #{fdType,jdbcType=VARCHAR},
+      fd_url = #{fdUrl,jdbcType=VARCHAR},
+      fd_percode = #{fdPercode,jdbcType=VARCHAR},
+      fd_parent_id = #{fdParentId,jdbcType=VARCHAR},
+      fd_parent_ids = #{fdParentIds,jdbcType=VARCHAR},
+      fd_order = #{fdOrder,jdbcType=INTEGER},
+      fd_available = #{fdAvailable,jdbcType=VARCHAR},
+      doc_order = #{docOrder,jdbcType=BIGINT},
+      doc_creator_id = #{docCreatorId,jdbcType=VARCHAR},
+      doc_alteror_id = #{docAlterorId,jdbcType=VARCHAR},
+      doc_create_time = #{docCreateTime,jdbcType=TIMESTAMP},
+      doc_alter_time = #{docAlterTime,jdbcType=TIMESTAMP}
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select fd_id, fd_name, fd_description, fd_type, fd_url, fd_percode, fd_parent_id, 
+    fd_parent_ids, fd_order, fd_available, doc_order, doc_creator_id, doc_alteror_id, 
+    doc_create_time, doc_alter_time
+    from sys_permission
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select fd_id, fd_name, fd_description, fd_type, fd_url, fd_percode, fd_parent_id, 
+    fd_parent_ids, fd_order, fd_available, doc_order, doc_creator_id, doc_alteror_id, 
+    doc_create_time, doc_alter_time
+    from sys_permission
+  </select>
+</mapper>

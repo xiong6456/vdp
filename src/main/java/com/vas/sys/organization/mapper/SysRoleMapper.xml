@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vas.sys.organization.mapper.SysRoleMapper">
+  <resultMap id="BaseResultMap" type="com.vas.sys.organization.pojo.SysRole">
+    <id column="fd_id" jdbcType="VARCHAR" property="fdId" />
+    <result column="fd_code" jdbcType="VARCHAR" property="fdCode" />
+    <result column="fd_name" jdbcType="VARCHAR" property="fdName" />
+    <result column="fd_description" jdbcType="VARCHAR" property="fdDescription" />
+    <result column="fd_available" jdbcType="VARCHAR" property="fdAvailable" />
+    <result column="fd_order" jdbcType="INTEGER" property="fdOrder" />
+    <result column="doc_order" jdbcType="BIGINT" property="docOrder" />
+    <result column="doc_creator_id" jdbcType="VARCHAR" property="docCreatorId" />
+    <result column="doc_alteror_id" jdbcType="VARCHAR" property="docAlterorId" />
+    <result column="doc_create_time" jdbcType="TIMESTAMP" property="docCreateTime" />
+    <result column="doc_alter_time" jdbcType="TIMESTAMP" property="docAlterTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_role
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.vas.sys.organization.pojo.SysRole">
+    insert into sys_role (fd_id, fd_code, fd_name, 
+      fd_description, fd_available, fd_order, 
+      doc_order, doc_creator_id, doc_alteror_id, 
+      doc_create_time, doc_alter_time)
+    values (#{fdId,jdbcType=VARCHAR}, #{fdCode,jdbcType=VARCHAR}, #{fdName,jdbcType=VARCHAR}, 
+      #{fdDescription,jdbcType=VARCHAR}, #{fdAvailable,jdbcType=VARCHAR}, #{fdOrder,jdbcType=INTEGER}, 
+      #{docOrder,jdbcType=BIGINT}, #{docCreatorId,jdbcType=VARCHAR}, #{docAlterorId,jdbcType=VARCHAR}, 
+      #{docCreateTime,jdbcType=TIMESTAMP}, #{docAlterTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.vas.sys.organization.pojo.SysRole">
+    update sys_role
+    set fd_code = #{fdCode,jdbcType=VARCHAR},
+      fd_name = #{fdName,jdbcType=VARCHAR},
+      fd_description = #{fdDescription,jdbcType=VARCHAR},
+      fd_available = #{fdAvailable,jdbcType=VARCHAR},
+      fd_order = #{fdOrder,jdbcType=INTEGER},
+      doc_order = #{docOrder,jdbcType=BIGINT},
+      doc_creator_id = #{docCreatorId,jdbcType=VARCHAR},
+      doc_alteror_id = #{docAlterorId,jdbcType=VARCHAR},
+      doc_create_time = #{docCreateTime,jdbcType=TIMESTAMP},
+      doc_alter_time = #{docAlterTime,jdbcType=TIMESTAMP}
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select fd_id, fd_code, fd_name, fd_description, fd_available, fd_order, doc_order, 
+    doc_creator_id, doc_alteror_id, doc_create_time, doc_alter_time
+    from sys_role
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select fd_id, fd_code, fd_name, fd_description, fd_available, fd_order, doc_order, 
+    doc_creator_id, doc_alteror_id, doc_create_time, doc_alter_time
+    from sys_role
+  </select>
+</mapper>

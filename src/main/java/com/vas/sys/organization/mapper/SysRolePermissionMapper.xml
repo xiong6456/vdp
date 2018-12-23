@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vas.sys.organization.mapper.SysRolePermissionMapper">
+  <resultMap id="BaseResultMap" type="com.vas.sys.organization.pojo.SysRolePermission">
+    <result column="fd_role_id" jdbcType="VARCHAR" property="fdRoleId" />
+    <result column="fd_permission_id" jdbcType="VARCHAR" property="fdPermissionId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.vas.sys.organization.pojo.SysRolePermission">
+    insert into sys_role_permission (fd_role_id, fd_permission_id)
+    values (#{fdRoleId,jdbcType=VARCHAR}, #{fdPermissionId,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select fd_role_id, fd_permission_id
+    from sys_role_permission
+  </select>
+</mapper>

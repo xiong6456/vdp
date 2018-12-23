@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vas.sys.organization.mapper.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.vas.sys.organization.pojo.SysUser">
+    <id column="fd_id" jdbcType="VARCHAR" property="fdId" />
+    <result column="fd_name" jdbcType="VARCHAR" property="fdName" />
+    <result column="fd_phone" jdbcType="VARCHAR" property="fdPhone" />
+    <result column="fd_is_available" jdbcType="VARCHAR" property="fdIsAvailable" />
+    <result column="fd_login_name" jdbcType="VARCHAR" property="fdLoginName" />
+    <result column="fd_password" jdbcType="VARCHAR" property="fdPassword" />
+    <result column="fd_salt" jdbcType="VARCHAR" property="fdSalt" />
+    <result column="fd_locked" jdbcType="VARCHAR" property="fdLocked" />
+    <result column="fd_dept_id" jdbcType="VARCHAR" property="fdDeptId" />
+    <result column="fd_parent_id" jdbcType="VARCHAR" property="fdParentId" />
+    <result column="fd_type" jdbcType="VARCHAR" property="fdType" />
+    <result column="fd_bak_1" jdbcType="VARCHAR" property="fdBak1" />
+    <result column="fd_bak_2" jdbcType="VARCHAR" property="fdBak2" />
+    <result column="doc_order" jdbcType="BIGINT" property="docOrder" />
+    <result column="doc_creator_id" jdbcType="VARCHAR" property="docCreatorId" />
+    <result column="doc_alteror_id" jdbcType="VARCHAR" property="docAlterorId" />
+    <result column="doc_create_time" jdbcType="TIMESTAMP" property="docCreateTime" />
+    <result column="doc_alter_time" jdbcType="TIMESTAMP" property="docAlterTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_user
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.vas.sys.organization.pojo.SysUser">
+    insert into sys_user (fd_id, fd_name, fd_phone, 
+      fd_is_available, fd_login_name, fd_password, 
+      fd_salt, fd_locked, fd_dept_id, 
+      fd_parent_id, fd_type, fd_bak_1, 
+      fd_bak_2, doc_order, doc_creator_id, 
+      doc_alteror_id, doc_create_time, doc_alter_time
+      )
+    values (#{fdId,jdbcType=VARCHAR}, #{fdName,jdbcType=VARCHAR}, #{fdPhone,jdbcType=VARCHAR}, 
+      #{fdIsAvailable,jdbcType=VARCHAR}, #{fdLoginName,jdbcType=VARCHAR}, #{fdPassword,jdbcType=VARCHAR}, 
+      #{fdSalt,jdbcType=VARCHAR}, #{fdLocked,jdbcType=VARCHAR}, #{fdDeptId,jdbcType=VARCHAR}, 
+      #{fdParentId,jdbcType=VARCHAR}, #{fdType,jdbcType=VARCHAR}, #{fdBak1,jdbcType=VARCHAR}, 
+      #{fdBak2,jdbcType=VARCHAR}, #{docOrder,jdbcType=BIGINT}, #{docCreatorId,jdbcType=VARCHAR}, 
+      #{docAlterorId,jdbcType=VARCHAR}, #{docCreateTime,jdbcType=TIMESTAMP}, #{docAlterTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.vas.sys.organization.pojo.SysUser">
+    update sys_user
+    set fd_name = #{fdName,jdbcType=VARCHAR},
+      fd_phone = #{fdPhone,jdbcType=VARCHAR},
+      fd_is_available = #{fdIsAvailable,jdbcType=VARCHAR},
+      fd_login_name = #{fdLoginName,jdbcType=VARCHAR},
+      fd_password = #{fdPassword,jdbcType=VARCHAR},
+      fd_salt = #{fdSalt,jdbcType=VARCHAR},
+      fd_locked = #{fdLocked,jdbcType=VARCHAR},
+      fd_dept_id = #{fdDeptId,jdbcType=VARCHAR},
+      fd_parent_id = #{fdParentId,jdbcType=VARCHAR},
+      fd_type = #{fdType,jdbcType=VARCHAR},
+      fd_bak_1 = #{fdBak1,jdbcType=VARCHAR},
+      fd_bak_2 = #{fdBak2,jdbcType=VARCHAR},
+      doc_order = #{docOrder,jdbcType=BIGINT},
+      doc_creator_id = #{docCreatorId,jdbcType=VARCHAR},
+      doc_alteror_id = #{docAlterorId,jdbcType=VARCHAR},
+      doc_create_time = #{docCreateTime,jdbcType=TIMESTAMP},
+      doc_alter_time = #{docAlterTime,jdbcType=TIMESTAMP}
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select fd_id, fd_name, fd_phone, fd_is_available, fd_login_name, fd_password, fd_salt, 
+    fd_locked, fd_dept_id, fd_parent_id, fd_type, fd_bak_1, fd_bak_2, doc_order, doc_creator_id, 
+    doc_alteror_id, doc_create_time, doc_alter_time
+    from sys_user
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select fd_id, fd_name, fd_phone, fd_is_available, fd_login_name, fd_password, fd_salt, 
+    fd_locked, fd_dept_id, fd_parent_id, fd_type, fd_bak_1, fd_bak_2, doc_order, doc_creator_id, 
+    doc_alteror_id, doc_create_time, doc_alter_time
+    from sys_user
+  </select>
+
+  <select id="queryUniqueByUserName" parameterType="java.lang.String"
+          resultType="java.lang.Integer">
+    SELECT count(*) FROM sys_user
+    where
+    fd_login_name=#{userName}
+  </select>
+
+  <sql id="Base_Column_List">
+    fd_id, fd_name, fd_phone, fd_is_available, fd_login_name, fd_password, fd_salt,
+    fd_locked, fd_dept_id, fd_parent_id, fd_type, fd_bak_1, fd_bak_2, doc_order, doc_creator_id,
+    doc_alteror_id, doc_create_time, doc_alter_time
+  </sql>
+
+  <select id="queryUserByName" resultMap="BaseResultMap"
+          parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from sys_user
+    where fd_login_name = #{userName,jdbcType=VARCHAR}
+  </select>
+
+  <select id="queryRolesByName" resultType="java.lang.String"
+          parameterType="java.lang.String">
+    SELECT r.fd_code FROM sys_role r,sys_user_role
+    ur,sys_user u WHERE r.fd_id =
+    ur.fd_role_id AND u.fd_id = ur.fd_user_id
+    AND
+    u.fd_login_name=#{userName}
+  </select>
+
+  <select id="findPermissions" resultType="java.lang.String"
+          parameterType="java.lang.String">
+    SELECT sp.fd_percode FROM sys_role r,sys_user_role
+    ur,sys_user
+    u,sys_permission sp,sys_role_permission rp WHERE r.fd_id =
+    ur.fd_role_id
+    AND u.fd_id = ur.fd_user_id AND
+    sp.fd_id=rp.fd_permission_id
+    AND rp.fd_role_id=ur.fd_id AND
+    u.fd_login_name=#{userName}
+  </select>
+
+  <update id="lockByUserName" parameterType="java.lang.String">
+    update sys_user
+    set
+    fd_locked = '1'
+    where fd_login_name=#{userName}
+  </update>
+
+  <delete id="deleteByIds" parameterType="map">
+    delete from sys_user where fd_id in
+    <foreach collection="ids" item="fdId" index="index" open="("
+             separator="," close=")">
+      #{fdId}
+    </foreach>
+  </delete>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.vas.sys.organization.pojo.SysUser">
+    update sys_user
+    <set>
+      <if test="fdName != null">
+        fd_name = #{fdName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdPhone != null">
+        fd_phone = #{fdPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="fdIsAvailable != null">
+        fd_is_available = #{fdIsAvailable,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLoginName != null">
+        fd_login_name = #{fdLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdPassword != null">
+        fd_password = #{fdPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="fdSalt != null">
+        fd_salt = #{fdSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLocked != null">
+        fd_locked = #{fdLocked,jdbcType=VARCHAR},
+      </if>
+      <if test="fdDeptId != null">
+        fd_dept_id = #{fdDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentId != null">
+        fd_parent_id = #{fdParentId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdType != null">
+        fd_type = #{fdType,jdbcType=VARCHAR},
+      </if>
+      <if test="fdBak1 != null">
+        fd_bak_1 = #{fdBak1,jdbcType=VARCHAR},
+      </if>
+      <if test="fdBak2 != null">
+        fd_bak_2 = #{fdBak2,jdbcType=VARCHAR},
+      </if>
+      <if test="docAlterorId != null">
+        doc_alteror_id = #{docAlterorId,jdbcType=VARCHAR},
+      </if>
+      <if test="docAlterTime != null">
+        doc_alter_time = #{docAlterTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByUser" resultMap="BaseResultMap"
+          parameterType="com.vas.sys.organization.pojo.SysUser">
+    SELECT
+    su.fd_id,
+    su.fd_name,
+    su.fd_phone,
+    su.fd_is_available,
+    su.fd_login_name,
+    su.fd_password,
+    su.fd_salt,
+    su.fd_locked,
+    od.fd_name AS fd_dept_name,
+    su.fd_parent_id,
+    su.fd_type,
+    su.fd_bak_1,
+    su.fd_bak_2,
+    sus.fd_name as fd_bak_2_name
+    FROM
+    sys_user su
+    LEFT JOIN
+    Sys_Dept od ON su.fd_Dept_Id = od.fd_id
+    left join sys_user sus on su.fd_bak_2 = sus.fd_id
+    where 1=1
+    <if test="fdName != null and fdName != '' ">
+      and su.fd_name = #{fdName,jdbcType=VARCHAR}
+    </if>
+    <if test="fdDeptId != null and fdDeptId != ''">
+      and su.fd_dept_id = #{fdDeptId,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+  <select id="selectByRoleId" parameterType="java.lang.String"
+          resultType="map">
+    select sys_user.fd_name,sys_user.fd_id FROM sys_user where
+    sys_user.fd_login_name !='sys' and
+    sys_user.fd_id in
+    (select ur.fd_user_id from sys_user_role ur where
+    ur.fd_role_id=#{fdRoleId})
+  </select>
+
+  <select id="unSelectByRoleId" parameterType="java.lang.String"
+          resultType="map">
+    select sys_user.fd_name,sys_user.fd_id FROM sys_user where
+    sys_user.fd_login_name !='sys' and
+    sys_user.fd_id not in
+    (select ur.fd_user_id from sys_user_role ur where
+    ur.fd_role_id=#{fdRoleId})
+  </select>
+
+  <select id="unSelectByRoleIdandName" parameterType="java.lang.String"
+          resultType="map">
+    select sys_user.fd_name,sys_user.fd_id FROM sys_user where
+    sys_user.fd_id not in
+    (select ur.fd_user_id from sys_user_role ur where
+    ur.fd_role_id=#{fdRoleId})
+    and sys_user.fd_name like #{fdName}
+  </select>
+</mapper>

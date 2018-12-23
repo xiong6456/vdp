@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vas.sys.organization.mapper.SysUserRoleMapper">
+  <resultMap id="BaseResultMap" type="com.vas.sys.organization.pojo.SysUserRole">
+    <result column="fd_user_id" jdbcType="VARCHAR" property="fdUserId" />
+    <result column="fd_role_id" jdbcType="VARCHAR" property="fdRoleId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.vas.sys.organization.pojo.SysUserRole">
+    insert into sys_user_role (fd_user_id, fd_role_id)
+    values (#{fdUserId,jdbcType=VARCHAR}, #{fdRoleId,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select fd_user_id, fd_role_id
+    from sys_user_role
+  </select>
+</mapper>
