@@ -29,7 +29,7 @@
 	<mvc:default-servlet-handler />
 
 	<!-- 扫描controller（controller层注入） -->
-	<context:component-scan base-package="com.vas.controller" />
+	<context:component-scan base-package="com.vas.**.controller" />
 
 	<!-- 配制处理器映射器 -->
 	<bean

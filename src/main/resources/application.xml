@@ -72,70 +72,72 @@
 		</tx:attributes>
 	</tx:advice>
 	<aop:config>
-		<aop:pointcut id="allManagerMethod" expression="execution(* com.vas.service..*.*(..))"/>
+		<!--execution(* com.vas.*.service..*.*(..)) com前第一个*表示任意返回值，service前面*表示任一包名，
+		service后面.*表示任意字符结尾的类，最后*(..)表示任意方法-->
+		<aop:pointcut id="allManagerMethod" expression="execution(* com.vas.*.service..*.*(..))"/>
 		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="transactionAdvice"/>
 	</aop:config>
 	<!--================= 事务配置 End =================== -->
 
 	<!-- 自动扫描了所有的XxxxMapper.xml对应的mapper接口文件，这样就不用一个一个手动配置Mpper的映射了，只要Mapper接口类和Mapper映射文件对应起来就可以了。 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.vas.mapper" />
+		<property name="basePackage" value="com.vas.**.mapper" />
 	</bean>
 
 	<!-- 配置Mybatis的文件 ，mapperLocations配置**Mapper.xml文件位置，configLocation配置mybatis-config文件位置 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath*:com/vas/mapper/**/*Mapper.xml" />
+		<property name="mapperLocations" value="classpath*:com/vas/**/mapper/*Mapper.xml" />
 		<property name="configLocation" value="classpath:mybatis/mybatis-config.xml" />
 	</bean>
 
 	<!-- 自动扫描注解的bean -->
-	<context:component-scan base-package="com.vas.service" />
+	<context:component-scan base-package="com.vas.**.service" />
 
-	<!--<bean id="springContextUtil" class="com.vas.util.sys.SpringContextUtil"/>
+	<bean id="springContextUtil" class="com.vas.util.SpringContextUtil"/>
 
-	&lt;!&ndash; 初始化配制 &ndash;&gt;
-	<bean id="initConfiguration" class="com.vas.util.sys.InitConfiguration"/>
+	<!-- 初始化配制 -->
+	<bean id="initConfiguration" class="com.vas.util.InitConfiguration"/>
 
 	<bean id="multipartResolver"
 		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		&lt;!&ndash;one of the properties available;the maximum upload size in bytes 10M &ndash;&gt;
+		<!--one of the properties available;the maximum upload size in bytes 10M -->
 		<property name="maxUploadSize" value="10485760" />
 	</bean>
 
-	&lt;!&ndash; 开启注解事务 &ndash;&gt;
+	<!-- 开启注解事务 -->
 	<task:annotation-driven />
 
-	&lt;!&ndash; 自动扫描所有任务 &ndash;&gt;
-	&lt;!&ndash;<context:component-scan base-package="com.vas.quartz" />&ndash;&gt;
+	<!-- 自动扫描所有任务 -->
+	<!--<context:component-scan base-package="com.vas.quartz" />-->
 
-	&lt;!&ndash; ====================Shiro start==================== &ndash;&gt;
-	&lt;!&ndash; 缓存管理器 使用Ehcache实现 &ndash;&gt;
+	<!-- ====================Shiro start==================== -->
+	<!-- 缓存管理器 使用Ehcache实现 -->
 	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
 		<property name="cacheManagerConfigFile" value="classpath:springshiro/ehcache-shiro.xml" />
 	</bean>
 
-	&lt;!&ndash; 凭证匹配器 &ndash;&gt;
-	<bean id="credentialsMatcher" class="com.vas.util.login.RetryLimitHashedCredentialsMatcher">
+	<!-- 凭证匹配器 -->
+	<bean id="credentialsMatcher" class="com.vas.sys.organization.util.RetryLimitHashedCredentialsMatcher">
 		<constructor-arg ref="cacheManager" />
-		&lt;!&ndash; 散列算法 &ndash;&gt;
+		<!-- 散列算法 -->
 		<property name="hashAlgorithmName" value="md5" />
-		&lt;!&ndash; 散列次数 &ndash;&gt;
+		<!-- 散列次数 -->
 		<property name="hashIterations" value="2" />
 		<property name="storedCredentialsHexEncoded" value="true" />
 	</bean>
 
-	&lt;!&ndash; shiro filter &ndash;&gt;
+	<!-- shiro filter -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-		&lt;!&ndash; 注入安全管理器 &ndash;&gt;
+		<!-- 注入安全管理器 -->
 		<property name="securityManager" ref="securityManager" />
-		&lt;!&ndash; 身份认证失败 认证提交的地址 &ndash;&gt;
+		<!-- 身份认证失败 认证提交的地址 -->
 		<property name="loginUrl" value="/login.jsp" />
-		&lt;!&ndash; 权限认证失败 没有权限认证提交的地址 &ndash;&gt;
+		<!-- 权限认证失败 没有权限认证提交的地址 -->
 		<property name="unauthorizedUrl" value="/unauthorized.jsp" />
-		&lt;!&ndash; 登陆成功后的一面 &ndash;&gt;
+		<!-- 登陆成功后的一面 -->
 		<property name="successUrl" value="/index.jsp" />
-		&lt;!&ndash; 过虑器链定义，从上向下顺序执行，一般将/**放在最下边 &ndash;&gt;
+		<!-- 过虑器链定义，从上向下顺序执行，一般将/**放在最下边 -->
 		<property name="filterChainDefinitions">
 			<value>
 				/login.html = anon
@@ -143,36 +145,36 @@
 				/backstage/**= anon
 				/resource/**= anon
 				/common/**= anon
-				&lt;!&ndash;验证码&ndash;&gt;
+				<!--验证码-->
 				/shiro/validateCode = anon
 				/shiro/login = anon
 				/vasservice/** = anon
-				&lt;!&ndash; 表示身份认证通过或通过记住我认证通过的可以访问 &ndash;&gt;
+				<!-- 表示身份认证通过或通过记住我认证通过的可以访问 -->
 				/** = authc
 			</value>
 		</property>
 	</bean>
-	&lt;!&ndash; 自定义域realm &ndash;&gt;
-	<bean id="customRealm" class="com.vas.util.login.CustomRealm">
+	<!-- 自定义域realm -->
+	<bean id="customRealm" class="com.vas.sys.organization.util.CustomRealm">
 		<property name="credentialsMatcher" ref="credentialsMatcher" />
 	</bean>
-	&lt;!&ndash; 安全管理器 ref对象 &ndash;&gt;
+	<!-- 安全管理器 ref对象 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="customRealm" />
 		<property name="sessionManager" ref="sessionManager" />
 	</bean>
-	&lt;!&ndash; 配置sessionManager &ndash;&gt;
+	<!-- 配置sessionManager -->
 	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
-		&lt;!&ndash; 设置session超时时间，单位ms &ndash;&gt;
+		<!-- 设置session超时时间，单位ms -->
 		<property name="globalSessionTimeout" value="3000000" />
-		&lt;!&ndash; 删除过期session &ndash;&gt;
+		<!-- 删除过期session -->
 		<property name="deleteInvalidSessions" value="true" />
 	</bean>
-	&lt;!&ndash; Shiro生命周期处理器 &ndash;&gt;
+	<!-- Shiro生命周期处理器 -->
 	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
 	<bean
 			class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
 		<property name="securityManager" ref="securityManager" />
-	</bean>-->
+	</bean>
 	<!-- ====================Shiro end==================== -->
 </beans>  

@@ -21,7 +21,7 @@
         </javaTypeResolver>
 
         <!-- targetProject:生成PO类的位置 -->
-        <javaModelGenerator targetPackage="com.vas.pojo.sys.organization"
+        <javaModelGenerator targetPackage="com.vas.sys.organization.pojo"
                             targetProject=".\src\main\java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
@@ -29,25 +29,25 @@
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
         <!-- targetProject:mapper映射文件生成的位置 -->
-        <sqlMapGenerator targetPackage="com.vas.mapper.sys.organization"
+        <sqlMapGenerator targetPackage="com.vas.sys.organization.mapper"
                          targetProject=".\src\main\java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
         <!-- targetPackage：mapper接口生成的位置 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.vas.sys.mapper.organization"
+                             targetPackage="com.vas.sys.organization.mapper"
                              targetProject=".\src\main\java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <!--<table schema="" tableName="sys_user"></table>-->
-        <!--<table schema="" tableName="sys_role"></table>-->
-        <!--<table schema="" tableName="sys_user_role"></table>-->
-        <!--<table schema="" tableName="sys_permission"></table>-->
+        <table schema="" tableName="sys_user"></table>
+        <table schema="" tableName="sys_role"></table>
+        <table schema="" tableName="sys_user_role"></table>
+        <table schema="" tableName="sys_permission"></table>
         <!--<table schema="" tableName="sys_config"></table>-->
-        <!--<table schema="" tableName="sys_dept"></table>-->
+        <table schema="" tableName="sys_dept"></table>
         <!--<table schema="" tableName="sys_code"></table>-->
         <!--<table schema="" tableName="sys_menu"></table>-->
         <table schema="" tableName="sys_role_permission"></table>
