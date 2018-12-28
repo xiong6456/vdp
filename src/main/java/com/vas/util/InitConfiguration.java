@@ -51,7 +51,6 @@ public class InitConfiguration implements
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		// root application context 没有parent，他就是老大.
 		String flag = PropertiesUtil.getProperty("properties/jdbc.properties", "jdbc.method");
-		flag = "create";
 		if (event.getApplicationContext().getParent() == null && "create".equals(flag)) {
 			PropertiesUtil.setProperty("properties/jdbc.properties", "jdbc.method","update");
 			// 需要执行的逻辑代码，当spring容器初始化完成后就会执行该方法。
