@@ -19,6 +19,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Date;
 
 /**
  * @Description
@@ -50,6 +51,7 @@ public class InitConfiguration implements
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		// root application context 没有parent，他就是老大.
 		String flag = PropertiesUtil.getProperty("properties/jdbc.properties", "jdbc.method");
+		flag = "create";
 		if (event.getApplicationContext().getParent() == null && "create".equals(flag)) {
 			PropertiesUtil.setProperty("properties/jdbc.properties", "jdbc.method","update");
 			// 需要执行的逻辑代码，当spring容器初始化完成后就会执行该方法。
@@ -172,6 +174,10 @@ public class InitConfiguration implements
 		PasswordHelper tPasswordHelper = new PasswordHelper();
 		tPasswordHelper.encryptPassword(tSysUser);
 		tSysUser.setFdLocked("0");
+		tSysUser.setDocCreatorId("000000000000000000000zerousersys");
+		tSysUser.setDocAlterorId("000000000000000000000zerousersys");
+		tSysUser.setDocCreateTime(new Date());
+		tSysUser.setDocAlterTime(new Date());
 		sysUserMapper.insert(tSysUser);
 	}
 
@@ -190,6 +196,10 @@ public class InitConfiguration implements
 		PasswordHelper tPasswordHelper = new PasswordHelper();
 		tPasswordHelper.encryptPassword(tSysUser);
 		tSysUser.setFdLocked("0");
+		tSysUser.setDocCreatorId("000000000000000000000zerousersys");
+		tSysUser.setDocAlterorId("000000000000000000000zerousersys");
+		tSysUser.setDocCreateTime(new Date());
+		tSysUser.setDocAlterTime(new Date());
 		sysUserMapper.insert(tSysUser);
 	}
 
@@ -224,6 +234,10 @@ public class InitConfiguration implements
 		tSysRoleSys.setFdCode("ROLE_SYS");
 		tSysRoleSys.setFdName("超级管理员角色");
 		tSysRoleSys.setFdDescription("拥有超级管理员角色可进行开发");
+		tSysRoleSys.setDocCreatorId("000000000000000000000zerousersys");
+		tSysRoleSys.setDocAlterorId("000000000000000000000zerousersys");
+		tSysRoleSys.setDocCreateTime(new Date());
+		tSysRoleSys.setDocAlterTime(new Date());
 		sysRoleMapper.insert(tSysRoleSys);
 	}
 	
@@ -238,6 +252,10 @@ public class InitConfiguration implements
 		tSysRoleAdmin.setFdCode("ROLE_ADMIN");
 		tSysRoleAdmin.setFdName("管理员角色");
 		tSysRoleAdmin.setFdDescription("拥有管理员角色可对系统进行管理");
+		tSysRoleAdmin.setDocCreatorId("000000000000000000000zerousersys");
+		tSysRoleAdmin.setDocAlterorId("000000000000000000000zerousersys");
+		tSysRoleAdmin.setDocCreateTime(new Date());
+		tSysRoleAdmin.setDocAlterTime(new Date());
 		sysRoleMapper.insert(tSysRoleAdmin);
 	}
 	
@@ -265,6 +283,10 @@ public class InitConfiguration implements
 		tSysRoleAdmin.setFdCode("ROLE_DEPT_VIEW");
 		tSysRoleAdmin.setFdName("部门管理查看角色");
 		tSysRoleAdmin.setFdDescription("拥有部门管理查看权限可查看部门管理");
+		tSysRoleAdmin.setDocCreatorId("000000000000000000000zerousersys");
+		tSysRoleAdmin.setDocAlterorId("000000000000000000000zerousersys");
+		tSysRoleAdmin.setDocCreateTime(new Date());
+		tSysRoleAdmin.setDocAlterTime(new Date());
 		sysRoleMapper.insert(tSysRoleAdmin);
 	}
 	
@@ -279,6 +301,10 @@ public class InitConfiguration implements
 		tSysRoleAdmin.setFdCode("ROLE_USER_VIEW");
 		tSysRoleAdmin.setFdName("用户管理查看角色");
 		tSysRoleAdmin.setFdDescription("拥有用户管理查看权限可查看用户管理");
+		tSysRoleAdmin.setDocCreatorId("000000000000000000000zerousersys");
+		tSysRoleAdmin.setDocAlterorId("000000000000000000000zerousersys");
+		tSysRoleAdmin.setDocCreateTime(new Date());
+		tSysRoleAdmin.setDocAlterTime(new Date());
 		sysRoleMapper.insert(tSysRoleAdmin);
 	}
 	

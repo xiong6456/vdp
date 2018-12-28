@@ -132,11 +132,11 @@
 		<!-- 注入安全管理器 -->
 		<property name="securityManager" ref="securityManager" />
 		<!-- 身份认证失败 认证提交的地址 -->
-		<property name="loginUrl" value="/login.jsp" />
+		<property name="loginUrl" value="/login.html" />
 		<!-- 权限认证失败 没有权限认证提交的地址 -->
 		<property name="unauthorizedUrl" value="/unauthorized.jsp" />
 		<!-- 登陆成功后的一面 -->
-		<property name="successUrl" value="/index.jsp" />
+		<property name="successUrl" value="/index.html" />
 		<!-- 过虑器链定义，从上向下顺序执行，一般将/**放在最下边 -->
 		<property name="filterChainDefinitions">
 			<value>
@@ -146,8 +146,8 @@
 				/resource/**= anon
 				/common/**= anon
 				<!--验证码-->
-				/shiro/validateCode = anon
-				/shiro/login = anon
+				/sys/organization/validateCode = anon
+				/sys/organization/login = anon
 				/vasservice/** = anon
 				<!-- 表示身份认证通过或通过记住我认证通过的可以访问 -->
 				/** = authc
