@@ -1,4 +1,5 @@
 package com.vas.sys.organization.service.impl;
+import com.vas.sys.common.pojo.Page;
 import com.vas.sys.organization.mapper.SysUserMapper;
 import com.vas.sys.organization.pojo.SysUser;
 import com.vas.sys.organization.service.SysUserService;
@@ -129,8 +130,12 @@ public class SysUserServiceImpl implements SysUserService {
 	 * @see SysUserService#select()
 	 */
 	@Override
-	public JSONObject select() {
+	public JSONObject select(Page pPage) {
 		JSONObject jsonObject = new JSONObject();
+		JSONObject rtnJson = new JSONObject();
+		rtnJson.put("code",0);
+		rtnJson.put("msg","");
+		rtnJson.put("count",100);
 		List<SysUser> selectAll = sysUserMapper.selectAll();
 		jsonObject.put("total", selectAll.size());
 		jsonObject.put("rows", selectAll);

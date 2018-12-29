@@ -19,3 +19,15 @@ function GetUrlPara() {
     var end = arrUrl[1].indexOf("/");
     return arrUrl[0]+"//"+arrUrl[1].substring(0,end);
 }
+
+/**
+ * Created by Hevin*Xiong on 2018/12/25.
+ */
+// 配置扩展方法路径
+layui.config({
+    base: '../../common/js/'   // 模块目录
+}).extend({                         // 模块别名
+    vip_nav: 'vas_nav'
+    , vip_tab: 'vas_tab'
+    , vip_table: 'vas_table'
+});

@@ -2,6 +2,7 @@ package com.vas.sys.organization.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.vas.sys.common.pojo.Page;
 import com.vas.sys.organization.pojo.SysUser;
 import com.vas.sys.organization.service.SysUserService;
 import net.sf.json.JSONObject;
@@ -40,10 +41,15 @@ public class UserController {
     
     @ResponseBody
     @RequestMapping("/select")
-    public String select(){
+    public String select(HttpServletRequest request){
+        String page = request.getParameter("page");
+        String limit = request.getParameter("limit");
+        Page tPage = new Page();
+        tPage.setCurPage(page);
+        tPage.setPageSize(limit);
     	JSONObject jsonObject = new JSONObject();
         try {
-        	jsonObject = userService.select();
+        	jsonObject = userService.select(tPage);
         } catch (Exception e) {
         	logger.info("查询失败，原因是："+e.getMessage());
         }

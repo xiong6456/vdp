@@ -1,4 +1,4 @@
-package com.vas.sys.common;
+package com.vas.sys.common.pojo;
 
 import com.vas.util.IDGenerator;
 import com.vas.util.UserUtil;

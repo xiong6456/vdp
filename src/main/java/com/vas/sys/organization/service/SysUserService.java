@@ -2,6 +2,7 @@ package com.vas.sys.organization.service;
 
 import java.util.Set;
 
+import com.vas.sys.common.pojo.Page;
 import com.vas.sys.organization.pojo.SysUser;
 import net.sf.json.JSONObject;
 
@@ -47,10 +48,11 @@ public interface SysUserService {
 	public String selectBox(SysUser pSysUser);
 	/**
 	 * @Description 查询所有用户
+	 * @param pPage 分页参数
 	 * @author Hevin*Xiong
 	 * @time 2018-2-11 上午11:32:41
 	 */
-	public JSONObject select();
+	public JSONObject select(Page pPage);
 	/**
 	 * @Description 通过fdId查询所有用户
 	 * @author Hevin*Xiong

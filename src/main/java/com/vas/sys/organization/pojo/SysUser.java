@@ -1,6 +1,6 @@
 package com.vas.sys.organization.pojo;
 
-import com.vas.sys.common.BasePojo;
+import com.vas.sys.common.pojo.BasePojo;
 
 import java.util.Date;
 
