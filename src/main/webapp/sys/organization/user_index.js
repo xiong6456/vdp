@@ -83,7 +83,8 @@ layui.use(['table',  'layer','element'], function () {
     $(document).on('click','#btn-add',function() {
         var card='card';
         var title = '新增人员';
-        var id=new Date().getTime();
+        // var id=new Date().getTime();
+        var id='sysorganizationuserinput';
         var flag = getTitleId(card, title);                             // 是否有该选项卡存在
         // 大于0就是有该选项卡了
         if (flag > 0) {

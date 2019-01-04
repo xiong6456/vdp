@@ -5,13 +5,18 @@ import com.vas.sys.common.pojo.BasePojo;
 import java.util.Date;
 
 public class SysUser extends BasePojo{
-    private String fdId;
 
     private String fdName;
 
     private String fdPhone;
 
+    private String fdEmail;
+
+    private String fdIdentity;
+
     private String fdIsAvailable;
+
+    private String fdSex;
 
     private String fdLoginName;
 
@@ -33,22 +38,6 @@ public class SysUser extends BasePojo{
 
     private Long docOrder;
 
-    private String docCreatorId;
-
-    private String docAlterorId;
-
-    private Date docCreateTime;
-
-    private Date docAlterTime;
-
-    public String getFdId() {
-        return fdId;
-    }
-
-    public void setFdId(String fdId) {
-        this.fdId = fdId == null ? null : fdId.trim();
-    }
-
     public String getFdName() {
         return fdName;
     }
@@ -65,12 +54,36 @@ public class SysUser extends BasePojo{
         this.fdPhone = fdPhone == null ? null : fdPhone.trim();
     }
 
+    public String getFdEmail() {
+        return fdEmail;
+    }
+
+    public void setFdEmail(String fdEmail) {
+        this.fdEmail = fdEmail == null ? null : fdEmail.trim();
+    }
+
+    public String getFdIdentity() {
+        return fdIdentity;
+    }
+
+    public void setFdIdentity(String fdIdentity) {
+        this.fdIdentity = fdIdentity == null ? null : fdIdentity.trim();
+    }
+
     public String getFdIsAvailable() {
         return fdIsAvailable;
     }
 
     public void setFdIsAvailable(String fdIsAvailable) {
         this.fdIsAvailable = fdIsAvailable == null ? null : fdIsAvailable.trim();
+    }
+
+    public String getFdSex() {
+        return fdSex;
+    }
+
+    public void setFdSex(String fdSex) {
+        this.fdSex = fdSex == null ? null : fdSex.trim();
     }
 
     public String getFdLoginName() {
@@ -151,37 +164,5 @@ public class SysUser extends BasePojo{
 
     public void setDocOrder(Long docOrder) {
         this.docOrder = docOrder;
-    }
-
-    public String getDocCreatorId() {
-        return docCreatorId;
-    }
-
-    public void setDocCreatorId(String docCreatorId) {
-        this.docCreatorId = docCreatorId == null ? null : docCreatorId.trim();
-    }
-
-    public String getDocAlterorId() {
-        return docAlterorId;
-    }
-
-    public void setDocAlterorId(String docAlterorId) {
-        this.docAlterorId = docAlterorId == null ? null : docAlterorId.trim();
-    }
-
-    public Date getDocCreateTime() {
-        return docCreateTime;
-    }
-
-    public void setDocCreateTime(Date docCreateTime) {
-        this.docCreateTime = docCreateTime;
-    }
-
-    public Date getDocAlterTime() {
-        return docAlterTime;
-    }
-
-    public void setDocAlterTime(Date docAlterTime) {
-        this.docAlterTime = docAlterTime;
     }
 }

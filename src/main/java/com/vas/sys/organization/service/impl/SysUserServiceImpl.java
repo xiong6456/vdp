@@ -7,6 +7,7 @@ import com.vas.sys.organization.util.JSONUtil;
 import com.vas.sys.organization.util.PasswordHelper;
 import com.vas.sys.organization.util.RetryLimitHashedCredentialsMatcher;
 import com.vas.util.IDGenerator;
+import com.vas.util.UserUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -14,10 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+
 /**
  * @Description
  * @author Hevin*Xiong
@@ -114,12 +113,16 @@ public class SysUserServiceImpl implements SysUserService {
 			PasswordHelper tPasswordHelper = new PasswordHelper();
 			tPasswordHelper.encryptPassword(pSysUser);
 			pSysUser.setFdId(IDGenerator.generateID());
+			pSysUser.setDocCreatorId(UserUtil.getUser().getFdId());
+			pSysUser.setDocAlterorId(UserUtil.getUser().getFdId());
+			pSysUser.setDocCreateTime(new Date());
+			pSysUser.setDocAlterTime(new Date());
 			sysUserMapper.insert(pSysUser);
 			jsonObject.put("flag", "success");
 			jsonObject.put("msg", "提交成功！");
 		} catch (Exception e) {
 			jsonObject.put("flag", "error");
-			jsonObject.put("msg", "删除失败，原因是：" + e.getMessage());
+			jsonObject.put("msg", "提交失败，原因是：" + e.getMessage());
 		}
 		return jsonObject;
 	}

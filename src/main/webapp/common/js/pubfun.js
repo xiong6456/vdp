@@ -25,7 +25,7 @@ function GetUrlPara() {
  */
 // 配置扩展方法路径
 layui.config({
-    base: './common/js/'   // 模块目录
+    base: '../../common/js/'   // 模块目录
 }).extend({                         // 模块别名
     vas_nav: 'vas_nav'
     , vas_tab: 'vas_tab'

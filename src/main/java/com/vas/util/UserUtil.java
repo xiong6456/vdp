@@ -9,7 +9,7 @@ public abstract class UserUtil {
      * @return
      */
     public static SysUser getUser() {
-        Object principal = SecurityUtils.getSubject().getPrincipal();
+        Object principal = SecurityUtils.getSubject().getSession().getAttribute("userInfo");
         SysUser sysUser = (SysUser)principal;
         return sysUser;
     }
