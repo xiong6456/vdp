@@ -44,16 +44,13 @@ public class UserController {
     public String select(HttpServletRequest request){
         String page = request.getParameter("page");
         String limit = request.getParameter("limit");
-        Page tPage = new Page();
-        tPage.setCurPage(page);
-        tPage.setPageSize(limit);
-    	JSONObject jsonObject = new JSONObject();
+    	String rtnStr = "";
         try {
-        	jsonObject = userService.select(tPage);
+            rtnStr = userService.select(page,limit);
         } catch (Exception e) {
         	logger.info("查询失败，原因是："+e.getMessage());
         }
-        return jsonObject.toString();
+        return rtnStr;
     }
     
     @ResponseBody

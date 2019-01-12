@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.jsqlparser.jsqlparser:quartz:0.9.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../Workspaces/.m2/repository/com/jsqlparser/jsqlparser/quartz/0.9.1/quartz-0.9.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../Workspaces/.m2/repository/com/jsqlparser/jsqlparser/quartz/0.9.1/quartz-0.9.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../Workspaces/.m2/repository/com/jsqlparser/jsqlparser/quartz/0.9.1/quartz-0.9.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

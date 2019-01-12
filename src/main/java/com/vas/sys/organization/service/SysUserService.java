@@ -48,11 +48,12 @@ public interface SysUserService {
 	public String selectBox(SysUser pSysUser);
 	/**
 	 * @Description 查询所有用户
-	 * @param pPage 分页参数
+	 * @param pageNum 当前页数
+	 * @param pageSize 查询条数
 	 * @author Hevin*Xiong
 	 * @time 2018-2-11 上午11:32:41
 	 */
-	public JSONObject select(Page pPage);
+	public String select(String pageNum,String pageSize);
 	/**
 	 * @Description 通过fdId查询所有用户
 	 * @author Hevin*Xiong

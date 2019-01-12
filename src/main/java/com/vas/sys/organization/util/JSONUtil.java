@@ -1,6 +1,10 @@
 package com.vas.sys.organization.util;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+
+
+import java.util.List;
 
 /**
  * @Description JSON处理
@@ -29,5 +33,14 @@ public class JSONUtil {
 		tempString = tempString.replaceAll("null", "\"\"");
 		return tempString;
 	}
-	
+
+	/**
+	 * 将List对象转成JSON格式字符串
+	 */
+	public static String listToJSONString(List obj) {
+		JSONArray jsonArray = JSONArray.fromObject(obj);
+		String tempString = jsonArray.toString();
+		tempString = tempString.replaceAll("null", "\"\"");
+		return tempString;
+	}
 }

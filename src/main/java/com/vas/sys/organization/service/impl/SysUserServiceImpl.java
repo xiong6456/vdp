@@ -1,4 +1,6 @@
 package com.vas.sys.organization.service.impl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.vas.sys.common.pojo.Page;
 import com.vas.sys.organization.mapper.SysUserMapper;
 import com.vas.sys.organization.pojo.SysUser;
@@ -6,6 +8,7 @@ import com.vas.sys.organization.service.SysUserService;
 import com.vas.sys.organization.util.JSONUtil;
 import com.vas.sys.organization.util.PasswordHelper;
 import com.vas.sys.organization.util.RetryLimitHashedCredentialsMatcher;
+import com.vas.sys.organization.util.StringUtil;
 import com.vas.util.IDGenerator;
 import com.vas.util.UserUtil;
 import net.sf.json.JSONArray;
@@ -109,7 +112,9 @@ public class SysUserServiceImpl implements SysUserService {
 				jsonObject.put("msg", "用户名已存在！");
 				return jsonObject;
 			}
-			pSysUser.setFdPassword("123456");
+			if(StringUtil.isNull(pSysUser.getFdPassword())){
+				pSysUser.setFdPassword("123456");
+			}
 			PasswordHelper tPasswordHelper = new PasswordHelper();
 			tPasswordHelper.encryptPassword(pSysUser);
 			pSysUser.setFdId(IDGenerator.generateID());
@@ -133,17 +138,24 @@ public class SysUserServiceImpl implements SysUserService {
 	 * @see SysUserService#select()
 	 */
 	@Override
-	public JSONObject select(Page pPage) {
+	public String select(String pageNum,String pageSize) {
 		JSONObject jsonObject = new JSONObject();
 		JSONObject rtnJson = new JSONObject();
-		rtnJson.put("code",0);
-		rtnJson.put("msg","");
-		rtnJson.put("count",100);
-		List<SysUser> selectAll = sysUserMapper.selectAll();
-		jsonObject.put("total", selectAll.size());
-		jsonObject.put("rows", selectAll);
-		jsonObject = JSONUtil.convertJSONObject(jsonObject);
-		return jsonObject;
+		try {
+			rtnJson.put("code",0);
+			rtnJson.put("msg","");
+
+			// 在查询方法调用之前，调用分页插件的静态方法，中间最好不要隔任何代码
+			PageHelper.startPage(Integer.parseInt(pageNum), Integer.parseInt(pageSize));
+			List<SysUser> userList = sysUserMapper.selectAll();
+			PageInfo<SysUser> pageInfo = new PageInfo<SysUser>(userList);
+			rtnJson.put("count",pageInfo.getTotal());
+			rtnJson.put("data",pageInfo.getList());
+			logger.info(rtnJson.toString());
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		return rtnJson.toString();
 	}
 
 	/*
