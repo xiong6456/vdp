@@ -330,8 +330,8 @@
     </dependency>
 
     <dependency>
-      <groupId>com.jsqlparser.jsqlparser</groupId>
-      <artifactId>quartz</artifactId>
+      <groupId>com.github.jsqlparser</groupId>
+      <artifactId>jsqlparser</artifactId>
       <version>${jsqlparser.version}</version>
     </dependency>
 
