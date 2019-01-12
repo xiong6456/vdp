@@ -41,7 +41,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * SysUserService#queryUserByName(java.lang.String)
 	 */
 	@Override
-	public SysUser queryUserByName(String userName) {
+	public SysUser queryUserByName(String userName) throws Exception {
 		return sysUserMapper.queryUserByName(userName);
 	}
 
@@ -52,7 +52,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * SysUserService#queryRolesByName(java.lang.String)
 	 */
 	@Override
-	public Set<String> queryRolesByName(String userName) {
+	public Set<String> queryRolesByName(String userName) throws Exception {
 		return sysUserMapper.queryRolesByName(userName);
 	}
 
@@ -63,7 +63,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * SysUserService#findPermissions(java.lang.String)
 	 */
 	@Override
-	public Set<String> findPermissions(String userName) {
+	public Set<String> findPermissions(String userName) throws Exception {
 		return sysUserMapper.findPermissions(userName);
 	}
 
@@ -74,7 +74,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * SysUserService#lockByUserName(java.lang.String)
 	 */
 	@Override
-	public int lockByUserName(String userName) {
+	public int lockByUserName(String userName) throws Exception {
 		return sysUserMapper.lockByUserName(userName);
 	}
 
@@ -86,7 +86,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * .String)
 	 */
 	@Override
-	public int queryUniqueByUserName(String userName) {
+	public int queryUniqueByUserName(String userName) throws Exception {
 		return sysUserMapper.queryUniqueByUserName(userName);
 	}
 
@@ -97,7 +97,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * SysUserService#insert(SysUser)
 	 */
 	@Override
-	public JSONObject insert(SysUser pSysUser) {
+	public JSONObject insert(SysUser pSysUser) throws Exception {
 		JSONObject jsonObject = new JSONObject();
 		try {
 			String fdLoginName = pSysUser.getFdLoginName();
@@ -138,24 +138,20 @@ public class SysUserServiceImpl implements SysUserService {
 	 * @see SysUserService#select()
 	 */
 	@Override
-	public String select(String pageNum,String pageSize) {
+	public String select(String pageNum,String pageSize) throws Exception{
 		JSONObject jsonObject = new JSONObject();
 		JSONObject rtnJson = new JSONObject();
-		try {
-			rtnJson.put("code",0);
-			rtnJson.put("msg","");
+		rtnJson.put("code",0);
+		rtnJson.put("msg","");
 
-			// 在查询方法调用之前，调用分页插件的静态方法，中间最好不要隔任何代码
-			PageHelper.startPage(Integer.parseInt(pageNum), Integer.parseInt(pageSize));
-			List<SysUser> userList = sysUserMapper.selectAll();
-			PageInfo<SysUser> pageInfo = new PageInfo<SysUser>(userList);
-			rtnJson.put("count",pageInfo.getTotal());
-			rtnJson.put("data",pageInfo.getList());
-			logger.info(rtnJson.toString());
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		}
+		// 在查询方法调用之前，调用分页插件的静态方法，中间最好不要隔任何代码
+		PageHelper.startPage(Integer.parseInt(pageNum), Integer.parseInt(pageSize));
+		List<SysUser> userList = sysUserMapper.selectAll();
+		PageInfo<SysUser> pageInfo = new PageInfo<SysUser>(userList);
+		rtnJson.put("count",pageInfo.getTotal());
+		rtnJson.put("data",pageInfo.getList());
 		return rtnJson.toString();
+
 	}
 
 	/*
@@ -164,7 +160,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * @see SysUserService#delete(java.lang.String[])
 	 */
 	@Override
-	public JSONObject delete(String ids) {
+	public JSONObject delete(String ids) throws Exception {
 		JSONObject jsonObject = new JSONObject();
 		try {
 			String[] fdIds = ids.split(",");
@@ -187,7 +183,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * @see SysUserService#selectById(java.lang.String)
 	 */
 	@Override
-	public JSONObject selectById(String fdId) {
+	public JSONObject selectById(String fdId) throws Exception {
 		JSONObject jsonObject = new JSONObject();
 		SysUser user = sysUserMapper.selectByPrimaryKey(fdId);
 		jsonObject = JSONObject.fromObject(user);
@@ -215,7 +211,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * @see SysUserService#selectBox(java.lang.String)
 	 */
 	@Override
-	public String selectBox(SysUser pSysUser) {
+	public String selectBox(SysUser pSysUser) throws Exception {
 		JSONObject jsonObject = new JSONObject();
 //		SysUserExample tSysUserExample = new SysUserExample();
 //		Criteria criteria = tSysUserExample.createCriteria();
@@ -243,7 +239,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * SysUserService#selectByRoleId(java.lang.String)
 	 */
 	@Override
-	public String selectByRoleId(String fdRoleId) {
+	public String selectByRoleId(String fdRoleId) throws Exception {
 		String rtnStr = "";
 		try {
 			JSONArray jsonArray = new JSONArray();
@@ -262,7 +258,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * @see SysUserService#unSelectByRoleId(java.lang.String)
 	 */
 	@Override
-	public String unSelectByRoleId(String fdRoleId) {
+	public String unSelectByRoleId(String fdRoleId) throws Exception {
 		String rtnStr = "";
 		try {
 			JSONArray jsonArray = new JSONArray();
@@ -280,7 +276,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * @see SysUserService#unSelectByRoleIdandName(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public String unSelectByRoleIdandName(String fdRoleId, String fdName) {
+	public String unSelectByRoleIdandName(String fdRoleId, String fdName) throws Exception {
 		String rtnStr = "";
 		try {
 			fdName = "%" + fdName + "%";
@@ -303,7 +299,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * )
 	 */
 	@Override
-	public String pswUpdate(String fdLoginName, String oldPsw, String newPsw) {
+	public String pswUpdate(String fdLoginName, String oldPsw, String newPsw) throws Exception {
 		JSONObject jsonObject = new JSONObject();
 		SysUser queryUserByName = sysUserMapper.queryUserByName(fdLoginName);
 		/**检验输入的用户名是否存在*/
@@ -334,7 +330,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * @see SysUserService#pswReset(java.lang.String)
 	 */
 	@Override
-	public String pswReset(String fdLoginName) {
+	public String pswReset(String fdLoginName) throws Exception {
 		JSONObject jsonObject = new JSONObject();
 		SysUser queryUserByName = sysUserMapper.queryUserByName(fdLoginName);
 		if (queryUserByName == null) {
@@ -356,7 +352,7 @@ public class SysUserServiceImpl implements SysUserService {
 	 * @see SysUserService#pswUpdate(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public String pswOpenLock(String fdLoginName, String fdLocked) {
+	public String pswOpenLock(String fdLoginName, String fdLocked) throws Exception {
 		JSONObject jsonObject = new JSONObject();
 		SysUser queryUserByName = sysUserMapper.queryUserByName(fdLoginName);
 		if (queryUserByName == null) {

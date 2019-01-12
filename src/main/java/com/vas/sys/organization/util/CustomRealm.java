@@ -64,9 +64,14 @@ public class CustomRealm extends AuthorizingRealm {
 			throws AuthenticationException {
 		logger.info("======用户登陆认证======");
 		String userName = authenticationToken.getPrincipal().toString();
-		
-		SysUser user = sysUserService.queryUserByName(userName);
-		
+
+		SysUser user = null;
+		try {
+			user = sysUserService.queryUserByName(userName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		if(user == null) {
 			// 用户名不存在抛出异常
 			throw new UnknownAccountException();

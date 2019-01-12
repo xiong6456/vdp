@@ -42,8 +42,12 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
         // 自定义一个验证过程：当用户连续输入密码错误5次以上禁止用户登录一段时间
         if (retryCount.incrementAndGet() > 5) {
         	//设置为锁定状态
-        	sysUserService.lockByUserName(username);
-        	//提示用户密码已锁定
+            try {
+                sysUserService.lockByUserName(username);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            //提示用户密码已锁定
             throw new LockedAccountException();
         }
         boolean match = super.doCredentialsMatch(token, info);

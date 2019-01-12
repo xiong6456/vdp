@@ -13,23 +13,23 @@ import net.sf.json.JSONObject;
  * @version 1.0.0
  */
 public interface SysUserService {
-	public SysUser queryUserByName(String userName);
-    public Set<String> queryRolesByName(String userName);
-    public Set<String> findPermissions(String userName);
+	public SysUser queryUserByName(String userName) throws Exception;
+    public Set<String> queryRolesByName(String userName) throws Exception;
+    public Set<String> findPermissions(String userName) throws Exception;
     /**
 	 * @Description 密码输入5次错误就锁帐户
 	 * @param userName
 	 * @author Hevin*Xiong
 	 * @time 2018-2-11 上午11:28:54
 	 */
-    int lockByUserName(String userName);
+    int lockByUserName(String userName) throws Exception;
 	/**
 	 * @Description 
 	 * @param userName
 	 * @author Hevin*Xiong
 	 * @time 2018-2-11 上午11:28:54
 	 */
-	public int queryUniqueByUserName(String userName);
+	public int queryUniqueByUserName(String userName) throws Exception;
 	/**
 	 * @Description 
 	 * @param pSysUser
@@ -37,7 +37,7 @@ public interface SysUserService {
 	 * @return 
 	 * @time 2018-2-11 上午11:32:41
 	 */
-	public JSONObject insert(SysUser pSysUser);
+	public JSONObject insert(SysUser pSysUser) throws Exception;
 	/**
 	 * @Description 根据查询条件查询数据
 	 * @param pSysUser 
@@ -45,7 +45,7 @@ public interface SysUserService {
 	 * @return 
 	 * @time 2018-2-11 上午11:32:41
 	 */
-	public String selectBox(SysUser pSysUser);
+	public String selectBox(SysUser pSysUser) throws Exception;
 	/**
 	 * @Description 查询所有用户
 	 * @param pageNum 当前页数
@@ -53,38 +53,38 @@ public interface SysUserService {
 	 * @author Hevin*Xiong
 	 * @time 2018-2-11 上午11:32:41
 	 */
-	public String select(String pageNum,String pageSize);
+	public String select(String pageNum,String pageSize) throws Exception;
 	/**
 	 * @Description 通过fdId查询所有用户
 	 * @author Hevin*Xiong
 	 * @time 2018-2-11 上午11:32:41
 	 */
-	public JSONObject selectById(String fdId);
+	public JSONObject selectById(String fdId) throws Exception;
 	/**
 	 * @Description 通过角色id查询已选择角色的用户
 	 * @author Hevin*Xiong
 	 * @time 2018-2-11 上午11:32:41
 	 */
-	public String selectByRoleId(String fdRoleId);
+	public String selectByRoleId(String fdRoleId) throws Exception;
 	/**
 	 * @Description 通过角色id查询未选择角色的用户
 	 * @author Hevin*Xiong
 	 * @time 2018-2-11 上午11:32:41
 	 */
-	public String unSelectByRoleId(String fdRoleId);
+	public String unSelectByRoleId(String fdRoleId) throws Exception;
 	/**
 	 * @Description 通过角色id和人员名称查询未选择角色的用户
 	 * @author Hevin*Xiong
 	 * @time 2018-2-11 上午11:32:41
 	 */
-	public String unSelectByRoleIdandName(String fdRoleId, String fdName);
+	public String unSelectByRoleIdandName(String fdRoleId, String fdName) throws Exception;
 	/**
 	 * @Description 根据Ids删除数据
 	 * @param ids
 	 * @author Hevin*Xiong
 	 * @time 2018-2-11 上午11:32:41
 	 */
-	public JSONObject delete(String ids);
+	public JSONObject delete(String ids) throws Exception;
 	/**
 	 * @Description 用户修改
 	 * @param user
@@ -92,7 +92,7 @@ public interface SysUserService {
 	 * @author Hevin*Xiong
 	 * @time 2018-2-24 下午8:18:25
 	 */
-	public JSONObject update(SysUser user);
+	public JSONObject update(SysUser user) throws Exception;
 	/**
 	 * @Description 密码修改
 	 * @param fdLoginName
@@ -102,7 +102,7 @@ public interface SysUserService {
 	 * @author Hevin*Xiong
 	 * @time 2018-2-24 下午8:18:25
 	 */
-	public String pswUpdate(String fdLoginName, String oldPsw, String newPsw);
+	public String pswUpdate(String fdLoginName, String oldPsw, String newPsw) throws Exception;
 	/**
 	 * @Description 密码重置
 	 * @param fdLoginName
@@ -110,7 +110,7 @@ public interface SysUserService {
 	 * @author Hevin*Xiong
 	 * @time 2018-2-24 下午8:18:25
 	 */
-	public String pswReset(String fdLoginName);
+	public String pswReset(String fdLoginName) throws Exception;
 	/**
 	 * @Description 帐户解锁
 	 * @param fdLoginName
@@ -119,5 +119,5 @@ public interface SysUserService {
 	 * @author Hevin*Xiong
 	 * @time 2018-2-24 下午8:18:25
 	 */
-	public String pswOpenLock(String fdLoginName, String fdLock);
+	public String pswOpenLock(String fdLoginName, String fdLock) throws Exception;
 }

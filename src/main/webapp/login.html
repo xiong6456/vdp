@@ -112,9 +112,7 @@
             success:function(pdata){
                 var tData = eval('(' + pdata + ')');
                 if('success' != tData.loginRes){
-                    layer.alert(tData.loginRes, {
-                        title: '提交失败'
-                    });
+                    layer.msg(tData.loginRes,{time:1000});
                 } else {
                     window.location.href="index.html";
                 }
