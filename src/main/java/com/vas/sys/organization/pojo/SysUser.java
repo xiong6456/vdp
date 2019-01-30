@@ -14,8 +14,6 @@ public class SysUser extends BasePojo{
 
     private String fdIdentity;
 
-    private String fdIsAvailable;
-
     private String fdSex;
 
     private String fdLoginName;
@@ -68,14 +66,6 @@ public class SysUser extends BasePojo{
 
     public void setFdIdentity(String fdIdentity) {
         this.fdIdentity = fdIdentity == null ? null : fdIdentity.trim();
-    }
-
-    public String getFdIsAvailable() {
-        return fdIsAvailable;
-    }
-
-    public void setFdIsAvailable(String fdIsAvailable) {
-        this.fdIsAvailable = fdIsAvailable == null ? null : fdIsAvailable.trim();
     }
 
     public String getFdSex() {

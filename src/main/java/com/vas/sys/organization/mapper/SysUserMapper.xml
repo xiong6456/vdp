@@ -7,7 +7,6 @@
     <result column="fd_phone" jdbcType="VARCHAR" property="fdPhone" />
     <result column="fd_email" jdbcType="VARCHAR" property="fdEmail" />
     <result column="fd_identity" jdbcType="VARCHAR" property="fdIdentity" />
-    <result column="fd_is_available" jdbcType="VARCHAR" property="fdIsAvailable" />
     <result column="fd_sex" jdbcType="VARCHAR" property="fdSex" />
     <result column="fd_login_name" jdbcType="VARCHAR" property="fdLoginName" />
     <result column="fd_password" jdbcType="VARCHAR" property="fdPassword" />
@@ -30,7 +29,7 @@
   </delete>
   <insert id="insert" parameterType="com.vas.sys.organization.pojo.SysUser">
     insert into sys_user (fd_id, fd_name, fd_phone,
-      fd_email, fd_identity,fd_is_available,
+      fd_email, fd_identity,
       fd_sex, fd_login_name, fd_password,
       fd_salt, fd_locked, fd_dept_id, 
       fd_parent_id, fd_type, fd_bak_1, 
@@ -38,7 +37,7 @@
       doc_alteror_id, doc_create_time, doc_alter_time
       )
     values (#{fdId,jdbcType=VARCHAR}, #{fdName,jdbcType=VARCHAR}, #{fdPhone,jdbcType=VARCHAR},
-      #{fdEmail,jdbcType=VARCHAR}, #{fdIdentity,jdbcType=VARCHAR}, #{fdIsAvailable,jdbcType=VARCHAR},
+      #{fdEmail,jdbcType=VARCHAR}, #{fdIdentity,jdbcType=VARCHAR},
       #{fdSex,jdbcType=VARCHAR}, #{fdLoginName,jdbcType=VARCHAR}, #{fdPassword,jdbcType=VARCHAR},
       #{fdSalt,jdbcType=VARCHAR}, #{fdLocked,jdbcType=VARCHAR}, #{fdDeptId,jdbcType=VARCHAR}, 
       #{fdParentId,jdbcType=VARCHAR}, #{fdType,jdbcType=VARCHAR}, #{fdBak1,jdbcType=VARCHAR}, 
@@ -52,7 +51,6 @@
       fd_phone = #{fdPhone,jdbcType=VARCHAR},
       fd_email = #{fdEmail,jdbcType=VARCHAR},
       fd_identity = #{fdIdentity,jdbcType=VARCHAR},
-      fd_is_available = #{fdIsAvailable,jdbcType=VARCHAR},
       fd_sex = #{fdSex,jdbcType=VARCHAR},
       fd_login_name = #{fdLoginName,jdbcType=VARCHAR},
       fd_password = #{fdPassword,jdbcType=VARCHAR},
@@ -71,14 +69,14 @@
     where fd_id = #{fdId,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select fd_id, fd_name, fd_phone, fd_email, fd_identity, fd_is_available, fd_sex, fd_login_name, fd_password, fd_salt,
+    select fd_id, fd_name, fd_phone, fd_email, fd_identity,  fd_sex, fd_login_name, fd_password, fd_salt,
     fd_locked, fd_dept_id, fd_parent_id, fd_type, fd_bak_1, fd_bak_2, doc_order, doc_creator_id, 
     doc_alteror_id, doc_create_time, doc_alter_time
     from sys_user
     where fd_id = #{fdId,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select fd_id, fd_name, fd_phone, fd_email, fd_identity,fd_is_available, fd_sex, fd_login_name, fd_password, fd_salt,
+    select fd_id, fd_name, fd_phone, fd_email, fd_identity, fd_sex, fd_login_name, fd_password, fd_salt,
     fd_locked, fd_dept_id, fd_parent_id, fd_type, fd_bak_1, fd_bak_2, doc_order, doc_creator_id, 
     doc_alteror_id, doc_create_time, doc_alter_time
     from sys_user
@@ -92,7 +90,7 @@
   </select>
 
   <sql id="Base_Column_List">
-    fd_id, fd_name, fd_phone,fd_email, fd_identity, fd_is_available, fd_sex, fd_login_name, fd_password, fd_salt,
+    fd_id, fd_name, fd_phone,fd_email, fd_identity,  fd_sex, fd_login_name, fd_password, fd_salt,
     fd_locked, fd_dept_id, fd_parent_id, fd_type, fd_bak_1, fd_bak_2, doc_order, doc_creator_id,
     doc_alteror_id, doc_create_time, doc_alter_time
   </sql>
@@ -133,6 +131,13 @@
     where fd_login_name=#{userName}
   </update>
 
+  <update id="updateStatus" parameterType="java.lang.String">
+    update sys_user
+    set
+    fd_locked = #{pStatus}
+    where fd_id=#{pFdId}
+  </update>
+
   <delete id="deleteByIds" parameterType="map">
     delete from sys_user where fd_id in
     <foreach collection="ids" item="fdId" index="index" open="("
@@ -155,9 +160,6 @@
       </if>
       <if test="fdIdentity != null">
         fd_identity = #{fdIdentity,jdbcType=VARCHAR},
-      </if>
-      <if test="fdIsAvailable != null">
-        fd_is_available = #{fdIsAvailable,jdbcType=VARCHAR},
       </if>
       <if test="fdSex != null">
         fd_sex = #{fdSex,jdbcType=VARCHAR},
@@ -207,7 +209,6 @@
     su.fd_phone,
     su.fd_email,
     su.fd_identity,
-    su.fd_is_available,
     su.fd_sex,
     su.fd_login_name,
     su.fd_password,

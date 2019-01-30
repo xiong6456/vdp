@@ -1,41 +1,59 @@
 // layui方法
-layui.use(['table',  'layer','element'], function () {
+layui.use(['table', 'form', 'layer', 'vas_table','element'], function () {
 
     // 操作对象
-    var table = layui.table
+    var form = layui.form
+        , table = layui.table
         , layer = layui.layer
-        ,element = parent.layui.element //Tab的切换功能，切换事件监听等，需要依赖element模块
+        , vasTable = layui.vas_table
+        ,element = parent.layui.element
         , $ = layui.jquery;
 
     // 表格渲染
     var tableIns = table.render({
-        id: 'fdId'
-        ,elem: '#dataTable'                  //指定原始表格元素选择器（推荐id选择器）
-        , height: $(window).height() - ( $('.my-btn-box').outerHeight(true) ? $('.my-btn-box').outerHeight(true) + 30 :  40 )    //容器高度
+        elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）
+        , height: vasTable.getFullHeight()    //容器高度
         , cols: [[                  //标题栏
-            {checkbox: true, fixed: true}
-            , {field: 'fdName', title: '部门名称', width: 150, sort: true}
-            , {fixed: 'right', title: '操作', width: 150, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
+            //                {checkbox: true, sort: true, fixed: true, space: true}
+            {type: 'checkbox', fixed: 'left'}
+            , {field: 'fdId', title: 'ID', width: 60}
+            , {field: 'fdLoginName', title: '用户名', width: 100,align:'center'}
+            , {field: 'fdName', title: '姓名', width: 110,align:'center'}
+            , {field: 'fdSex', title: '姓别', width: 70,align:'center'}
+            , {field: 'fdLocked', title: '是否锁定', width: 90,align:'center'
+                ,templet: function(d){
+                var strCheck = d.fdLocked == "1" ? "checked" : "";
+                return '<input type="checkbox" name="status" lay-filter="status" lay-skin="switch" lay-text="是|否" ' +strCheck+ ' mid='+d.fdId+'>';
+            }}
+            , {field: 'fdPhone', title: '手机号', width: 140,align:'center'}
+            , {field: 'fdEmail', title: '邮箱', width: 170,align:'center'}
+            , {field: 'docCreateTime', title: '创建时间', width: 180,align:'center'
+                ,templet: function(d){
+                    return Format(d.docCreateTime,"yyyy-MM-dd hh:mm:ss");
+                }
+            }
+            , { title: '操作', width: 190, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
         ]]
         , id: 'dataCheck'
-        , url: '/dept/selectParent'
+        //            , url: '../../backstage/json/data_table.json'
+        ,url:'../../sys/organization/user/select'
         , method: 'get'
         , page: true
-        , limits: [10, 15, 20, 30, 60, 90, 150, 300]
+        , limits: [10, 15, 20, 50, 100]
         , limit: 10 //默认采用10
         , loading: false
         , done: function (res, curr, count) {
+            $("[data-field='fdId']").css('display','none');
             //如果是异步请求数据方式，res即为你接口返回的信息。
             //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
             console.log(res);
-            return res;
+
             //得到当前页码
-            // console.log(curr);
+            console.log(curr);
 
             //得到数据总量
-            // console.log(count);
+            console.log(count);
         }
-
     });
 
     // 获取选中行
@@ -56,16 +74,16 @@ layui.use(['table',  'layer','element'], function () {
         } else if(obj.event === 'del'){
             layer.confirm('确认删除此数据', function(index){
                 $.ajax({
-                    url: "/dept/delete",
+                    url: "../../sys/organization/user/delete",
                     type: "POST",
-                    data:{"id":data.fdId},
+                    data:{"ids":data.fdId},
                     dataType: "json",
                     success: function(data){
                         if(data.flag){
+                            tableIns.reload();
                             obj.del();
                             layer.close(index);
                             layer.msg("删除成功", {icon: 6});
-                            reloadTree();
                         }else{
                             layer.msg("删除失败", {icon: 5});
                         }
@@ -113,6 +131,35 @@ layui.use(['table',  'layer','element'], function () {
 
     table.on('checkbox(dataTable)', function(obj){
         console.log(obj)
+    });
+
+    //监听是否可用状态操作
+    form.on('switch(status)', function(obj){
+        var id = $(this).attr('mid');
+        var status='';
+        obj.elem.checked?status='1':status='0';
+        $.ajax({
+            type: 'POST',
+            url: '../../sys/organization/user/updateStatus',
+            data: {pFdId : id, pStatus : status},
+            dataType: "json",
+            success : function(data){
+                if(status == '0'){
+                    layer.msg("解锁成功");
+                }else{
+                    layer.msg("锁定成功");
+                }
+                tableIns.reload();
+            },
+            unSuccess: function (data) {
+                layer.msg("修改失败");
+            }
+        })
+    });
+
+    // 刷新
+    $('#btn-refresh').on('click', function () {
+        tableIns.reload();
     });
 
     var $ = layui.$, active = {

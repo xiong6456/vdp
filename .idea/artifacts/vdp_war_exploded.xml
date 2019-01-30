@@ -85,8 +85,7 @@
           <element id="library" level="project" name="Maven: org.codehaus.plexus:plexus-compiler-manager:1.8.1" />
           <element id="library" level="project" name="Maven: org.codehaus.plexus:plexus-compiler-javac:1.8.1" />
           <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:5.1.2" />
-          <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:1.0" />
-          <element id="library" level="project" name="Maven: com.jsqlparser.jsqlparser:quartz:0.9.1" />
+          <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:0.9.1" />
           <element id="library" level="project" name="Maven: commons-configuration:commons-configuration:1.8" />
         </element>
       </element>

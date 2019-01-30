@@ -120,4 +120,12 @@ public interface SysUserService {
 	 * @time 2018-2-24 下午8:18:25
 	 */
 	public String pswOpenLock(String fdLoginName, String fdLock) throws Exception;
+	/**
+	 * @Description 是否启用
+	 * @param pFdId
+	 * @param pStatus
+	 * @author Hevin*Xiong
+	 * @time 2019-01-30 上午9:35:00
+	 */
+	public String updateStatus(String pFdId,String pStatus) throws Exception;
 }

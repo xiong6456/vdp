@@ -45,6 +45,14 @@ public interface SysUserMapper {
     int lockByUserName(String userName);
 
     /**
+     * 通过pFdId锁定用户
+     * @param pFdId
+     * @param pStatus
+     * @return
+     */
+    int updateStatus(@Param("pFdId")String pFdId,@Param("pStatus") String pStatus);
+
+    /**
      * 通过用户IDS删除用户
      * @param ids
      * @return

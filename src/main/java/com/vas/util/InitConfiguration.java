@@ -167,7 +167,6 @@ public class InitConfiguration implements
 		SysUser tSysUser = new SysUser();
 		tSysUser.setFdId("0000000000000000000zerouseradmin");
 		tSysUser.setFdName("管理员");
-		tSysUser.setFdIsAvailable("0");
 		tSysUser.setFdLoginName("admin");
 		tSysUser.setFdPassword("admin");
 		PasswordHelper tPasswordHelper = new PasswordHelper();
@@ -189,7 +188,6 @@ public class InitConfiguration implements
 		SysUser tSysUser = new SysUser();
 		tSysUser.setFdId("000000000000000000000zerousersys");
 		tSysUser.setFdName("超级管理员");
-		tSysUser.setFdIsAvailable("0");
 		tSysUser.setFdLoginName("sys");
 		tSysUser.setFdPassword("sys");
 		PasswordHelper tPasswordHelper = new PasswordHelper();

@@ -179,4 +179,18 @@ public class UserController {
         }
         return result;
     }
+
+    @ResponseBody
+    @RequestMapping("/updateStatus")
+    public String updateStatus(HttpServletRequest request){
+        String result = "";
+        try {
+            String pFdId = request.getParameter("pFdId");
+            String pStatus = request.getParameter("pStatus");
+            result = userService.updateStatus(pFdId,pStatus);
+        } catch (Exception e) {
+            logger.info("锁定失败，原因是："+e.getMessage());
+        }
+        return result;
+    }
 }

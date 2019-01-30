@@ -29,83 +29,12 @@
 </div>
 
 <!-- 表格 -->
-<div id="dateTable" lay-filter="dataTable"></div>
+<table id="dateTable" lay-filter="dataTable"></table>
 
 <script type="text/javascript" src="../../resource/layui/layui.js"></script>
 <script type="text/javascript" src="../../common/js/pubfun.js"></script>
 <script type="text/javascript" src="./user_index.js"></script>
-<script type="text/javascript">
 
-    // layui方法
-    layui.use(['table', 'form', 'layer', 'vas_table'], function () {
-
-            // 操作对象
-            var form = layui.form
-                , table = layui.table
-                , layer = layui.layer
-                , vasTable = layui.vas_table
-                , $ = layui.jquery;
-
-            // 表格渲染
-            var tableIns = table.render({
-                elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）
-                , height: vasTable.getFullHeight()    //容器高度
-                , cols: [[                  //标题栏
-    //                {checkbox: true, sort: true, fixed: true, space: true}
-                    {type: 'checkbox', fixed: 'left'}
-                    , {field: 'fdId', title: 'ID', width: 80}
-                    , {field: 'fdLoginName', title: '用户名', width: 120}
-                    , {field: 'fdName', title: '姓名', width: 120}
-                    , {field: 'fdSex', title: '姓别', width: 80}
-                    , {field: 'fdPhone', title: '手机号', width: 150}
-                    , {field: 'fdEmail', title: '手机号', width: 180}
-                    , {field: 'docCreateTime', title: '创建时间', width: 180
-                        ,templet: function(d){
-                            return Format(d.docCreateTime,"yyyy-MM-dd hh:mm:ss");
-                        }
-                    }
-                    , {fixed: 'right', title: '操作', width: 160, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
-                ]]
-                , id: 'dataCheck'
-    //            , url: '../../backstage/json/data_table.json'
-                ,url:'../../sys/organization/user/select'
-                , method: 'get'
-                , page: true
-                , limits: [10, 15, 20, 50, 100]
-                , limit: 10 //默认采用10
-                , loading: false
-                , done: function (res, curr, count) {
-                    $("[data-field='fdId']").css('display','none');
-                    //如果是异步请求数据方式，res即为你接口返回的信息。
-                    //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
-                    console.log(res);
-
-                    //得到当前页码
-                    console.log(curr);
-
-                    //得到数据总量
-                    console.log(count);
-                }
-            });
-
-            // 获取选中行
-            table.on('checkbox(dataCheck)', function (obj) {
-                layer.msg('123');
-                console.log(obj.checked); //当前是否选中状态
-                console.log(obj.data); //选中行的相关数据
-                console.log(obj.type); //如果触发的是全选，则为：all，如果触发的是单选，则为：one
-            });
-
-            // 刷新
-            $('#btn-refresh').on('click', function () {
-                tableIns.reload();
-            });
-
-
-            // you code ...
-
-        });
-</script>
 <!-- 表格操作按钮集 -->
 <script type="text/html" id="barOption">
     <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>

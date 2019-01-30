@@ -10,7 +10,6 @@ create table sys_user
    fd_phone             varchar(40),
    fd_email             varchar(40),
    fd_identity          varchar(18),
-   fd_is_available      varchar(4),
    fd_sex      varchar(4),
    fd_login_name        varchar(50),
    fd_password          varchar(50),

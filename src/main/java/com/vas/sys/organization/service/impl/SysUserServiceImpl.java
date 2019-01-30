@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 /**
- * @Description
+ * @Description 用户管理
  * @author Hevin*Xiong
  * @time 2018-2-2 下午11:55:01
  * @version 1.0.0
@@ -117,6 +117,7 @@ public class SysUserServiceImpl implements SysUserService {
 			}
 			PasswordHelper tPasswordHelper = new PasswordHelper();
 			tPasswordHelper.encryptPassword(pSysUser);
+			pSysUser.setFdLocked("0");
 			pSysUser.setFdId(IDGenerator.generateID());
 			pSysUser.setDocCreatorId(UserUtil.getUser().getFdId());
 			pSysUser.setDocAlterorId(UserUtil.getUser().getFdId());
@@ -375,6 +376,25 @@ public class SysUserServiceImpl implements SysUserService {
 		sysUserMapper.updateByPrimaryKeySelective(queryUserByName);
 		jsonObject.put("flag", "success");
 		jsonObject.put("msg", "解锁成功！");
+		return jsonObject.toString();
+	}
+
+	@Override
+	public String updateStatus(String pFdId,String pStatus) throws Exception {
+		JSONObject jsonObject = new JSONObject();
+		try{
+			sysUserMapper.updateStatus(pFdId,pStatus);
+			jsonObject.put("flag", "success");
+			if("1".equals(pStatus)){
+				jsonObject.put("msg", "锁定成功！");
+			}else{
+				jsonObject.put("msg", "解锁成功！");
+			}
+		}catch (Exception e){
+			jsonObject.put("flag", "success");
+			jsonObject.put("msg", "锁定失败！");
+		}
+
 		return jsonObject.toString();
 	}
 

@@ -61,7 +61,6 @@ layui.use(['form','element'], function(){
                 //保存并新建
                 if(flag=='saveopen'){
                     location.href="./user_input.html";
-                    return true;
                 }
             },
             error:function(e){
