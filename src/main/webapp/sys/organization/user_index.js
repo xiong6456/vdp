@@ -56,6 +56,7 @@ layui.use(['table', 'form', 'layer', 'vas_table','element'], function () {
         }
     });
 
+    new
     // 获取选中行
     table.on('checkbox(dataCheck)', function (obj) {
         console.log(obj.checked); //当前是否选中状态
@@ -98,6 +99,30 @@ layui.use(['table', 'form', 'layer', 'vas_table','element'], function () {
             });
         }
     });
+
+    //批量删除人员
+    $(document).on('click','#btn-delete-all',function() {
+        layer.confirm('确认删除所有选中数据', function(index){
+            $.ajax({
+                url: "../../sys/organization/user/delete",
+                type: "POST",
+                data:{"ids":data.fdId},
+                dataType: "json",
+                success: function(data){
+                    if(data.flag){
+                        tableIns.reload();
+                        layer.close(index);
+                        layer.msg("删除成功", {icon: 6});
+                    }else{
+                        layer.msg("删除失败", {icon: 5});
+                    }
+                }
+
+            });
+        });
+    });
+
+    //新增人员
     $(document).on('click','#btn-add',function() {
         var card='card';
         var title = '新增人员';

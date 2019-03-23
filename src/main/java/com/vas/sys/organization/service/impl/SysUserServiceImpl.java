@@ -118,11 +118,6 @@ public class SysUserServiceImpl implements SysUserService {
 			PasswordHelper tPasswordHelper = new PasswordHelper();
 			tPasswordHelper.encryptPassword(pSysUser);
 			pSysUser.setFdLocked("0");
-			pSysUser.setFdId(IDGenerator.generateID());
-			pSysUser.setDocCreatorId(UserUtil.getUser().getFdId());
-			pSysUser.setDocAlterorId(UserUtil.getUser().getFdId());
-			pSysUser.setDocCreateTime(new Date());
-			pSysUser.setDocAlterTime(new Date());
 			sysUserMapper.insert(pSysUser);
 			jsonObject.put("flag", "success");
 			jsonObject.put("msg", "提交成功！");

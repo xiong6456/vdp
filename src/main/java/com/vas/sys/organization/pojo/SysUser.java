@@ -34,8 +34,6 @@ public class SysUser extends BasePojo{
 
     private String fdBak2;
 
-    private Long docOrder;
-
     public String getFdName() {
         return fdName;
     }
@@ -148,11 +146,4 @@ public class SysUser extends BasePojo{
         this.fdBak2 = fdBak2 == null ? null : fdBak2.trim();
     }
 
-    public Long getDocOrder() {
-        return docOrder;
-    }
-
-    public void setDocOrder(Long docOrder) {
-        this.docOrder = docOrder;
-    }
 }

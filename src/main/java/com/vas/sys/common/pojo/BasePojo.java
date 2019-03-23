@@ -14,8 +14,8 @@ public abstract class BasePojo implements IBasePojo, Serializable{
         }
         return fdId;
     }
-    public void setFdId(String id) {
-        this.fdId = id;
+    public void setFdId(String fdId) {
+        this.fdId = fdId;
     }
 
     protected Long docOrder;
