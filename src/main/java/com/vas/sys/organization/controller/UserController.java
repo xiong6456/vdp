@@ -2,15 +2,16 @@ package com.vas.sys.organization.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.vas.sys.common.pojo.Page;
 import com.vas.sys.organization.pojo.SysUser;
 import com.vas.sys.organization.service.SysUserService;
+import com.vas.util.StringUtil;
 import net.sf.json.JSONObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -115,11 +116,14 @@ public class UserController {
     
     @ResponseBody
     @RequestMapping("/delete")
-    public String delete(HttpServletRequest request){
+    public String delete(@RequestBody JSONObject req){
     	JSONObject jsonObject = new JSONObject();
         try {
-        	String ids = request.getParameter("ids");
-        	jsonObject = userService.delete(ids);
+        	String ids = req.getString("ids");
+        	if(StringUtil.isNotNull(ids)){
+                ids = ids.replaceAll("\\[","").replaceAll("]","").replaceAll("\"","");
+            }
+            jsonObject = userService.delete(ids);
         } catch (Exception e) {
         	logger.info("删除失败，原因是："+e.getMessage());
         }

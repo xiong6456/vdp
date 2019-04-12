@@ -46,24 +46,15 @@ layui.use(['table', 'form', 'layer', 'vas_table','element'], function () {
             $("[data-field='fdId']").css('display','none');
             //如果是异步请求数据方式，res即为你接口返回的信息。
             //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
-            console.log(res);
+            // console.log(res);
 
             //得到当前页码
-            console.log(curr);
+            // console.log(curr);
 
             //得到数据总量
-            console.log(count);
+            // console.log(count);
         }
     });
-
-    new
-    // 获取选中行
-    table.on('checkbox(dataCheck)', function (obj) {
-        console.log(obj.checked); //当前是否选中状态
-        console.log(obj.data); //选中行的相关数据
-        console.log(obj.type); //如果触发的是全选，则为：all，如果触发的是单选，则为：one
-    });
-
 
      //监听工具条
     table.on('tool(dataTable)', function(obj){
@@ -77,9 +68,10 @@ layui.use(['table', 'form', 'layer', 'vas_table','element'], function () {
                 $.ajax({
                     url: "../../sys/organization/user/delete",
                     type: "POST",
-                    data:{"ids":data.fdId},
-                    dataType: "json",
+                    data:JSON.stringify({"ids":data.fdId}),
+                    contentType:'application/json',
                     success: function(data){
+                        data = JSON.parse(data);
                         if(data.flag){
                             tableIns.reload();
                             obj.del();
@@ -101,14 +93,28 @@ layui.use(['table', 'form', 'layer', 'vas_table','element'], function () {
     });
 
     //批量删除人员
-    $(document).on('click','#btn-delete-all',function() {
+    $(document).on('click','#batchDel',function() {
+       var delList=[];
+        var checkStatus=table.checkStatus('dataCheck');
+            data=checkStatus.data;
+
+        data.forEach(function(n,i){
+            delList.push(n.fdId);
+        });
+        if(delList.length == 0){
+            layer.tips('请选择需要删除的行',$('#batchDel'),{
+                tips:[3,'#5fb878']
+            })
+            return false;
+        }
         layer.confirm('确认删除所有选中数据', function(index){
             $.ajax({
                 url: "../../sys/organization/user/delete",
-                type: "POST",
-                data:{"ids":data.fdId},
-                dataType: "json",
+                type: "post",
+                data:JSON.stringify({"ids":delList}),
+                contentType:'application/json',
                 success: function(data){
+                    data = JSON.parse(data);
                     if(data.flag){
                         tableIns.reload();
                         layer.close(index);
@@ -154,10 +160,6 @@ layui.use(['table', 'form', 'layer', 'vas_table','element'], function () {
         return id;
     }
 
-    table.on('checkbox(dataTable)', function(obj){
-        console.log(obj)
-    });
-
     //监听是否可用状态操作
     form.on('switch(status)', function(obj){
         var id = $(this).attr('mid');
@@ -186,16 +188,4 @@ layui.use(['table', 'form', 'layer', 'vas_table','element'], function () {
     $('#btn-refresh').on('click', function () {
         tableIns.reload();
     });
-
-    var $ = layui.$, active = {
-        reload: function(){
-            var reloadData = $('#btn-refresh');
-
-            table.reload('testReload', {
-                where: {
-                    keyword: reloadData.val()
-                }
-            });
-        }
-    };
 });

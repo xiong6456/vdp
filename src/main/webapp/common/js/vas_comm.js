@@ -84,7 +84,7 @@ layui.use(['layer', 'element', 'util'], function () {
                 //新增
                 element.tabAdd(card, {
                     title: '<span>' + title + '</span>'
-                    , content: '<iframe src="' + src + '" frameborder="0"></iframe>'
+                    , content: '<iframe src="' + src + '" frameborder="0" scrolling="no"></iframe>'
                     , id: id
                 });
                 // 关闭弹窗

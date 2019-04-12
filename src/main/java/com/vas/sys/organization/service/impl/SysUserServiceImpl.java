@@ -1,16 +1,13 @@
 package com.vas.sys.organization.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.vas.sys.common.pojo.Page;
 import com.vas.sys.organization.mapper.SysUserMapper;
 import com.vas.sys.organization.pojo.SysUser;
 import com.vas.sys.organization.service.SysUserService;
 import com.vas.sys.organization.util.JSONUtil;
 import com.vas.sys.organization.util.PasswordHelper;
 import com.vas.sys.organization.util.RetryLimitHashedCredentialsMatcher;
-import com.vas.sys.organization.util.StringUtil;
-import com.vas.util.IDGenerator;
-import com.vas.util.UserUtil;
+import com.vas.util.StringUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -163,11 +160,11 @@ public class SysUserServiceImpl implements SysUserService {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("ids", fdIds);
 			sysUserMapper.deleteByIds(map);
-			jsonObject.put("flag", "success");
+			jsonObject.put("flag", true);
 			jsonObject.put("msg", "删除成功！");
 		} catch (Exception e) {
 			logger.info("删除失败，原因是：" + e.getMessage());
-			jsonObject.put("flag", "error");
+			jsonObject.put("flag", false);
 			jsonObject.put("msg", "删除失败，原因是：" + e.getMessage());
 		}
 		return jsonObject;
