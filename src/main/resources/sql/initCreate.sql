@@ -95,6 +95,7 @@ create table sys_config
 (
    fd_id                varchar(36) not null,
    fd_type         varchar(100),
+   fd_locked 			varchar(1)  COMMENT '开关，1：锁定，0未锁定',
    fd_value        varchar(100),
    fd_bak_1             varchar(100),
    fd_bak_2             varchar(100),

@@ -60,7 +60,7 @@ layui.use(['table', 'form', 'layer', 'vas_table','element'], function () {
     table.on('tool(dataTable)', function(obj){
         var data = obj.data;
         if(obj.event === 'detail'){
-            openDetial("部门详情", ['600px', '400px'], "./DeptInput.html", "view", function() {
+            openDetial("部门详情", ['600px', '400px'], "user_edit.html", "view", function() {
                 // JSON.stringify(data))
             });
         } else if(obj.event === 'del'){
@@ -85,8 +85,8 @@ layui.use(['table', 'form', 'layer', 'vas_table','element'], function () {
                 });
             });
         } else if(obj.event === 'edit'){
-            layer.alert('编辑行：<br>'+ JSON.stringify(data))
-            openDetial("新增部门", ['600px', '400px'], "./DeptInput.html", "update", function() {
+            $("input[name='edit']").val(JSON.stringify(data));
+            openDetial("人员修改", ['800px', '500px'], "user_edit.html", "update",data,0, function() {
                 layer.msg("修改成功");
             });
         }
