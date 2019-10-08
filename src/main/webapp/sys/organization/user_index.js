@@ -60,19 +60,9 @@ layui.use(['table', 'form', 'layer', 'vas_table','element'], function () {
     table.on('tool(dataTable)', function(obj){
         var data = obj.data;
         if(obj.event === 'detail'){
-            layer.open({
-                type: 2,
-                area: ['700px', '450px'],
-                btn: ['关闭'],
-                fixed: false, //不固定
-                maxmin: true,
-                title:"人员信息",
-                content: './user_view.html',
-                success:function (layero,index) {
-                    var iframe = window['layui-layer-iframe' + index];
-                    iframe.child(data);
-                }
-            })
+            openDetial("部门详情", ['600px', '400px'], "user_edit.html", "view", function() {
+                // JSON.stringify(data))
+            });
         } else if(obj.event === 'del'){
             layer.confirm('确认删除此数据', function(index){
                 $.ajax({
@@ -95,43 +85,11 @@ layui.use(['table', 'form', 'layer', 'vas_table','element'], function () {
                 });
             });
         } else if(obj.event === 'edit'){
-            layer.open({
-                type: 2,
-                area: ['700px', '450px'],
-                fixed: false, //不固定
-                maxmin: true,
-                btn: ['保存', '关闭'],
-                btnAlign: 'c',
-                title:"人员修改",
-                content: './user_edit.html',
-                success:function (layero,index) {
-                    var iframe = window['layui-layer-iframe' + index];
-                    iframe.child(data);
-                },
-                yes: function(index, layero){
-                    alert(index+"---"+layero);
-                    /*$.ajax({
-                        type: 'POST',
-                        url: '../../sys/organization/user/update',
-                        data: {pFdId : id, pStatus : status},
-                        dataType: "json",
-                        success : function(data){
-                            if(status == '0'){
-                                layer.msg("修改成功");
-                            }else{
-                                layer.msg("修改成功");
-                            }
-                            tableIns.reload();
-                        },
-                        unSuccess: function (data) {
-                            layer.msg("修改失败");
-                        }
-                    })*/
-                }
-            })
+            openDetial("人员修改", ['800px', '500px'], "user_edit.html", "update",data,0, function() {
+                layer.msg("修改成功");
+            });
         }
     });
-
 
     //批量删除人员
     $(document).on('click','#batchDel',function() {

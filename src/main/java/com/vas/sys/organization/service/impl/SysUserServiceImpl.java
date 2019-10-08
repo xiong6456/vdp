@@ -187,9 +187,9 @@ public class SysUserServiceImpl implements SysUserService {
 	public JSONObject update(SysUser user) {
 		JSONObject jsonObject = new JSONObject();
 		try {
-			sysUserMapper.updateByPrimaryKeySelective(user);
+			int i = sysUserMapper.updateByPrimaryKeySelective(user);
 			jsonObject.put("flag", "success");
-			jsonObject.put("msg", "修改成功！");
+			jsonObject.put("msg", "修改成功");
 		} catch (Exception e) {
 			logger.info("修改失败，原因是：" + e.getMessage());
 			jsonObject.put("flag", "error");
