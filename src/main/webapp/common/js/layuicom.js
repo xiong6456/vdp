@@ -27,6 +27,7 @@ function openDetial(title, area, path, sucFunName,sucData,moveType, callBack) {
             var iframe = window['layui-layer-iframe' + index];
             if(iframe.update && iframe.update()){
                 layer.close(index);
+                window.location.reload();
                 return false;
             }
             var btn = layero.find('.layui-layer-btn').find('.layui-layer-btn0');

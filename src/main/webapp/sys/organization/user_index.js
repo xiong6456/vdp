@@ -85,7 +85,6 @@ layui.use(['table', 'form', 'layer', 'vas_table','element'], function () {
                 });
             });
         } else if(obj.event === 'edit'){
-            $("input[name='edit']").val(JSON.stringify(data));
             openDetial("人员修改", ['800px', '500px'], "user_edit.html", "update",data,0, function() {
                 layer.msg("修改成功");
             });
