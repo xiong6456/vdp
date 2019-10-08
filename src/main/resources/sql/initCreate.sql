@@ -52,9 +52,7 @@ drop table if exists sys_user_role;
 
 CREATE TABLE `sys_user_role` (
   `fd_user_id` varchar(36) NOT NULL,
-  `fd_role_id` varchar(36) NOT NULL,
-  foreign key(fd_user_id) references sys_user(fd_id),
-  foreign key(fd_role_id) references sys_role(fd_id)
+  `fd_role_id` varchar(36) NOT NULL
 );
 
 alter table sys_user_role comment '用户角色表';
@@ -84,9 +82,7 @@ alter table sys_permission comment '权限表';
 drop table if exists sys_role_permission;
 CREATE TABLE `sys_role_permission` (
   `fd_role_id` varchar(36) NOT NULL COMMENT '角色id',
-  `fd_permission_id` varchar(36) NOT NULL COMMENT '权限id',
-  foreign key(fd_permission_id) references sys_permission(fd_id),
-  foreign key(fd_role_id) references sys_role(fd_id)
+  `fd_permission_id` varchar(36) NOT NULL COMMENT '权限id'
 );
 alter table sys_role_permission comment '角色权限表';
 
