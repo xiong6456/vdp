@@ -60,7 +60,7 @@ layui.use(['table', 'form', 'layer', 'vas_table','element'], function () {
     table.on('tool(dataTable)', function(obj){
         var data = obj.data;
         if(obj.event === 'detail'){
-            openDetial("部门详情", ['600px', '400px'], "user_edit.html", "view", function() {
+            openDetial("人员详情", ['800px', '500px'], "user_view.html", "view", data,0,function() {
                 // JSON.stringify(data))
             });
         } else if(obj.event === 'del'){

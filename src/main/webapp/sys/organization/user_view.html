@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人员详情</title>
+    <link rel="stylesheet" href="../../resource/layui/css/layui.css">
+    <link rel="stylesheet" href="../../common/css/vas_style.css">
+    <script type="text/javascript" src="../../resource/layui/layui.js"></script>
+    <script type="text/javascript" src="../../common/js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="user_edit.js"></script>
+</head>
+<body>
+<form class="layui-form" action="" id="form">
+    <input type="hidden" name="fdId">
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+            <input type="text" name="fdLoginName" autocomplete="off" readonly class="layui-input-readonly">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-block">
+            <input type="text" name="fdName" readonly class="layui-input-readonly">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">手机</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="fdPhone" readonly class="layui-input-readonly">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-inline">
+                <input type="text" name="fdEmail" readonly class="layui-input-readonly">
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">身份证</label>
+        <div class="layui-input-block">
+            <input type="text" name="fdIdentity" readonly class="layui-input-readonly">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-inline">
+            <input type="password" name="fdPassword" readonly class="layui-input-readonly">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">所属部门</label>
+            <div class="layui-input-inline">
+                <select name="fdDeptId" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="1">layer</option>
+                    <option value="2">form</option>
+                    <option value="3">layim</option>
+                    <option value="4">element</option>
+                    <option value="5">laytpl</option>
+                    <option value="6">upload</option>
+                    <option value="7">laydate</option>
+                    <option value="8">laypage</option>
+                    <option value="9">flow</option>
+                    <option value="10">util</option>
+                    <option value="11">code</option>
+                    <option value="12">tree</option>
+                    <option value="13">layedit</option>
+                    <option value="14">nav</option>
+                    <option value="15">tab</option>
+                    <option value="16">table</option>
+                    <option value="17">select</option>
+                    <option value="18">checkbox</option>
+                    <option value="19">switch</option>
+                    <option value="20">radio</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">性别</label>
+        <div class="layui-input-block">
+            <input type="radio" name="fdSex" value="男" title="男" checked="" readonly>
+            <input type="radio" name="fdSex" value="女" title="女" readonly>
+        </div>
+    </div>
+</form>
+</body>
+</html>
