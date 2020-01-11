@@ -18,13 +18,13 @@
     where fd_id = #{fdId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.vas.blog.pojo.BlogMain">
-    insert into blog_main (fd_id, doc_subject, fd_content, 
-      fd_cate_id, fd_publish, doc_order, 
-      doc_creator_id, doc_alteror_id, doc_create_time, 
+    insert into blog_main (fd_id, doc_subject, fd_content,
+      fd_cate_id, fd_publish, doc_order,
+      doc_creator_id, doc_alteror_id, doc_create_time,
       doc_alter_time)
-    values (#{fdId,jdbcType=VARCHAR}, #{docSubject,jdbcType=VARCHAR}, #{fdContent,jdbcType=INTEGER}, 
-      #{fdCateId,jdbcType=VARCHAR}, #{fdPublish,jdbcType=VARCHAR}, #{docOrder,jdbcType=BIGINT}, 
-      #{docCreatorId,jdbcType=VARCHAR}, #{docAlterorId,jdbcType=VARCHAR}, #{docCreateTime,jdbcType=TIMESTAMP}, 
+    values (#{fdId,jdbcType=VARCHAR}, #{docSubject,jdbcType=VARCHAR}, #{fdContent,jdbcType=INTEGER},
+      #{fdCateId,jdbcType=VARCHAR}, #{fdPublish,jdbcType=VARCHAR}, #{docOrder,jdbcType=BIGINT},
+      #{docCreatorId,jdbcType=VARCHAR}, #{docAlterorId,jdbcType=VARCHAR}, #{docCreateTime,jdbcType=TIMESTAMP},
       #{docAlterTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.vas.blog.pojo.BlogMain">
@@ -41,62 +41,14 @@
     where fd_id = #{fdId,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select fd_id, doc_subject, fd_content, fd_cate_id, fd_publish, doc_order, doc_creator_id, 
+    select fd_id, doc_subject, fd_content, fd_cate_id, fd_publish, doc_order, doc_creator_id,
     doc_alteror_id, doc_create_time, doc_alter_time
     from blog_main
     where fd_id = #{fdId,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select fd_id, doc_subject, fd_content, fd_cate_id, fd_publish, doc_order, doc_creator_id, 
+    select fd_id, doc_subject, fd_content, fd_cate_id, fd_publish, doc_order, doc_creator_id,
     doc_alteror_id, doc_create_time, doc_alter_time
     from blog_main
   </select>
-  <resultMap id="BaseResultMap" type="com.vas.blog.pojo.BlogMain">
-    <id column="fd_id" jdbcType="VARCHAR" property="fdId" />
-    <result column="doc_subject" jdbcType="VARCHAR" property="docSubject" />
-    <result column="fd_content" jdbcType="INTEGER" property="fdContent" />
-    <result column="fd_cate_id" jdbcType="VARCHAR" property="fdCateId" />
-    <result column="doc_order" jdbcType="BIGINT" property="docOrder" />
-    <result column="doc_creator_id" jdbcType="VARCHAR" property="docCreatorId" />
-    <result column="doc_alteror_id" jdbcType="VARCHAR" property="docAlterorId" />
-    <result column="doc_create_time" jdbcType="TIMESTAMP" property="docCreateTime" />
-    <result column="doc_alter_time" jdbcType="TIMESTAMP" property="docAlterTime" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from blog_main
-    where fd_id = #{fdId,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="com.vas.blog.pojo.BlogMain">
-    insert into blog_main (fd_id, doc_subject, fd_content, 
-      fd_cate_id, doc_order, doc_creator_id, 
-      doc_alteror_id, doc_create_time, doc_alter_time
-      )
-    values (#{fdId,jdbcType=VARCHAR}, #{docSubject,jdbcType=VARCHAR}, #{fdContent,jdbcType=INTEGER}, 
-      #{fdCateId,jdbcType=VARCHAR}, #{docOrder,jdbcType=BIGINT}, #{docCreatorId,jdbcType=VARCHAR}, 
-      #{docAlterorId,jdbcType=VARCHAR}, #{docCreateTime,jdbcType=TIMESTAMP}, #{docAlterTime,jdbcType=TIMESTAMP}
-      )
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.vas.blog.pojo.BlogMain">
-    update blog_main
-    set doc_subject = #{docSubject,jdbcType=VARCHAR},
-      fd_content = #{fdContent,jdbcType=INTEGER},
-      fd_cate_id = #{fdCateId,jdbcType=VARCHAR},
-      doc_order = #{docOrder,jdbcType=BIGINT},
-      doc_creator_id = #{docCreatorId,jdbcType=VARCHAR},
-      doc_alteror_id = #{docAlterorId,jdbcType=VARCHAR},
-      doc_create_time = #{docCreateTime,jdbcType=TIMESTAMP},
-      doc_alter_time = #{docAlterTime,jdbcType=TIMESTAMP}
-    where fd_id = #{fdId,jdbcType=VARCHAR}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select fd_id, doc_subject, fd_content, fd_cate_id, doc_order, doc_creator_id, doc_alteror_id, 
-    doc_create_time, doc_alter_time
-    from blog_main
-    where fd_id = #{fdId,jdbcType=VARCHAR}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select fd_id, doc_subject, fd_content, fd_cate_id, doc_order, doc_creator_id, doc_alteror_id, 
-    doc_create_time, doc_alter_time
-    from blog_main
-  </select>
-</mapper>
+  </mapper>
