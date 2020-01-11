@@ -56,7 +56,10 @@ layui.use(['form','element'], function(){
                 }
                 //保存
                 if(flag=='save'){
+                    window.parent.layui.$('#btn-refresh').click();
                     element.tabDelete('card', 'sysorganizationuserinput');
+
+                    // parent.layui.table.reload('dateTable',{page: {curr: 1}});
                 }
                 //保存并新建
                 if(flag=='saveopen'){
