@@ -143,8 +143,10 @@
 				/login.html = anon
 				/unauthorized = anon
 				/backstage/**= anon
+				/blog/** = anon
 				/resource/**= anon
 				/common/**= anon
+				/=anon
 				<!--验证码-->
 				/sys/organization/validateCode = anon
 				/sys/organization/login = anon

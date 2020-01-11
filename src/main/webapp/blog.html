@@ -1,0 +1,445 @@
+
+
+
+<html>
+<head>
+    <title>博客专栏 - 晓码阁</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./resource/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./resource/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="./blog/css/blog.css">
+    <script src="./common/js/jquery-2.1.3.min.js"></script>
+    <script src="./blog/js/blog.js"></script>
+    <script src="./resource/bootstrap/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body {
+            padding-top: 10px;
+            padding-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <script type="text/javascript">
+
+        function checkData(){
+            var q=document.getElementById("q").value.trim();
+            if(q==null || q==""){
+                alert("请输入您要查询的关键字！");
+                return false;
+            }else{
+                return true;
+            }
+        }
+
+    </script>
+
+
+    <div class="row">
+        <div class="col-md-12" style="padding-top: 10px">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">展开</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/index"><b style="color: black"><strong>首页</strong></b></a>
+
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+
+                            <li><a href="/abortMe" target="_blank"><b color="black"><strong>关于本站</strong></b></a></li>
+
+                        </ul>
+                        <form action="javascript:alert('开发中~~~')" class="navbar-form navbar-right" role="search" method="post" onsubmit="return checkData()">
+                            <div class="form-group">
+                                <input type="text" id="q" name="q" value="" class="form-control" placeholder="请输入要查询的关键字...">
+                            </div>
+                            <button type="submit" class="btn btn-default" >搜索</button>
+                        </form>
+
+                        <ul class="nav navbar-nav user">
+                            <li><a href="login.html" target="_blank"><b color="black"><strong>登录</strong></b></a></li>
+                            <li><a href="/abortMe" target="_blank"><b color="black"><strong>注册</strong></b></a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-top: 50px;">
+            <button type="button" class="bar-btn navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" chg-target="#data_list" aria-expanded="false">
+                <span class="glyphicon glyphicon-menu-right"></span>
+            </button>
+
+        <!-- 左侧布局 -->
+        <div class="col-md-3 collapse navbar-collapse out" id="bs-example-navbar-collapse-2">
+            <div class="data_list">
+                <div class="data_list_title">
+
+                    博主信息
+                </div>
+                <div class="user_image">
+
+                    <img src="./blog/images/head.jpg"/>
+                </div>
+                <div class="nickName">javaxhw_程序浪人</div>
+                <div class="userSign">(知识改变命运，教育改变生活)</div>
+            </div>
+
+            <div class="data_list">
+                <div class="data_list_title">
+                    <img src="./blog/images/bytype_icon.png"/>
+                    按日志类别
+                </div>
+                <div class="datas">
+                    <ul>
+
+                        <li><span><a href="/index.html?btid=23">秒杀课程(1)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=1">自定义mvc(8)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=2">前端框架(42)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=4">索引框架(17)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=22">消息中间件(12)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=6">SSM(9)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=7">服务器部署(6)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=8">项目异常归总(5)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=10">安全框架(4)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=11">SpringBoot(16)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=12">程序人生(3)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=13">其他框架(7)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=14">开发工具(22)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=15">解决方案(10)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=16">23种设计模式(25)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=17">SpringCloud(18)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=18">第三方(17)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=19">Python(67)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=20">底层探究(2)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=21">dubbo(2)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=5">SSH(14)</a></span></li>
+
+                        <li><span><a href="/index.html?btid=9">java基础(72)</a></span></li>
+
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="data_list">
+                <div class="data_list_title">
+                    <img src="./blog/images/bydate_icon.png"/>
+                    按日志日期
+                </div>
+                <div class="datas">
+                    <ul>
+
+                        <li><span><a href="/index.html?releaseDateStr=2020年01月">2020年01月(2)</a></span></li>
+
+                        <li><span><a href="/index.html?releaseDateStr=2019年12月">2019年12月(2)</a></span></li>
+
+                        <li><span><a href="/index.html?releaseDateStr=2019年11月">2019年11月(31)</a></span></li>
+
+                        <li><span><a href="/index.html?releaseDateStr=2019年10月">2019年10月(17)</a></span></li>
+
+                        <li><span><a href="/index.html?releaseDateStr=2019年09月">2019年09月(16)</a></span></li>
+
+                        <li><span><a href="/index.html?releaseDateStr=2019年08月">2019年08月(38)</a></span></li>
+
+                        <li><span><a href="/index.html?releaseDateStr=2019年07月">2019年07月(27)</a></span></li>
+
+                        <li><span><a href="/index.html?releaseDateStr=2019年06月">2019年06月(47)</a></span></li>
+
+                        <li><span><a href="/index.html?releaseDateStr=2019年05月">2019年05月(61)</a></span></li>
+
+                        <li><span><a href="/index.html?releaseDateStr=2019年04月">2019年04月(18)</a></span></li>
+
+                        <li><span><a href="/index.html?releaseDateStr=2019年03月">2019年03月(50)</a></span></li>
+
+                        <li><span><a href="/index.html?releaseDateStr=2019年02月">2019年02月(57)</a></span></li>
+
+                        <li><span><a href="/index.html?releaseDateStr=2019年01月">2019年01月(13)</a></span></li>
+
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="data_list">
+                <div class="data_list_title">
+                    <img src="./blog/images/link_icon.png"/>
+                    友情链接
+                </div>
+                <div class="datas">
+                    <ul>
+
+                        <li><span><a href="http://www.baidu.com" target="_blank">百度</a></span></li>
+
+                        <li><span><a href="http://122.114.92.43/p4/index" target="_blank">晓码阁-美食网</a></span></li>
+
+                        <li><span><a href="http://59.110.212.17/p5/index" target="_blank">晓码阁-知识库</a></span></li>
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--
+            真正展示博客内容的地方，
+            所有博客链接的列表->list.jsp
+            单条博客详情->view.jsp
+            呼和条件的博客详情列表->result.jsp
+        -->
+        <div class="col-md-9">
+            <div class="data_list" id="data_list">
+                <div class="data_list_title">
+                    <img src="./blog/images/list_icon.png"/>
+                    最新博客</div>
+
+                <div class="datas">
+                    <ul>
+
+                        <li style="margin-bottom: 30px">
+                            <span class="date"><a href="/blog/articles/393">2020年01月04日</a></span>
+                            <span class="title"><a href="/blog/articles/393">HTML+CSS知识汇总</a></span>
+                            <span class="summary">摘要: 为了后续能够自主研发项目实战课程，特意回顾了下前端技术开发，将其所有涉及到的知识点做了整理，思维导图如下over......</span>
+                            <span class="img">
+
+						  		<a href="/blog/articles/393"><img src="./blog/images/20200104012950.png" alt="小李飞刀_前端" style="width:666px;height:333px;"></a>
+						  		&nbsp;&nbsp;
+
+						  		<a href="/blog/articles/393"><img src="./blog/images/20200104013036.png" alt="小李飞刀_前端" style="width:555px;height:666px;"></a>
+						  		&nbsp;&nbsp;
+
+					  	</span>
+                            <span class="info">发表于 2020-01-04 01:31 阅读(53) </span>
+
+                        </li>
+                        <hr style="height:5px;border:none;border-top:1px dashed gray;padding-bottom:  10px;" />
+
+                        <li style="margin-bottom: 30px">
+                            <span class="date"><a href="/blog/articles/392">2020年01月03日</a></span>
+                            <span class="title"><a href="/blog/articles/392">Shell编程</a></span>
+                            <span class="summary">摘要: 花了一点时间将运维一小块知识给学习了下，以下是相关知识梳理的思维导图后续会出详细的知识相关博客over......</span>
+                            <span class="img">
+
+						  		<a href="/blog/articles/392"><img src="./blog/images/20200103012456.png" alt="小李飞刀_运维shell编程" style="width: 666px; height: 555px;"></a>
+						  		&nbsp;&nbsp;
+
+					  	</span>
+                            <span class="info">发表于 2020-01-03 01:26 阅读(35) </span>
+
+                        </li>
+                        <hr style="height:5px;border:none;border-top:1px dashed gray;padding-bottom:  10px;" />
+
+                        <li style="margin-bottom: 30px">
+                            <span class="date"><a href="/blog/articles/391">2019年12月10日</a></span>
+                            <span class="title"><a href="/blog/articles/391">秒杀课程即将发布</a></span>
+                            <span class="summary">摘要: 秒杀课程相关知识点思维导图这篇博客紧接前面“高并发常用解决方案”，用代码论证前面博客所讲理论后面会慢慢上代码相关博客，尽情期待....另外，这张图只是初稿，后面会画的更将详细；未完待续......</span>
+                            <span class="img">
+
+						  		<a href="/blog/articles/391"><img src="./blog/images/20191210104148.png" alt="小李飞刀_秒杀" style="width:666px;height:555px;"></a>
+						  		&nbsp;&nbsp;
+
+					  	</span>
+                            <span class="info">发表于 2019-12-10 22:45 阅读(142) </span>
+
+                        </li>
+                        <hr style="height:5px;border:none;border-top:1px dashed gray;padding-bottom:  10px;" />
+
+                        <li style="margin-bottom: 30px">
+                            <span class="date"><a href="/blog/articles/390">2019年12月09日</a></span>
+                            <span class="title"><a href="/blog/articles/390">XMind8的使用</a></span>
+                            <span class="summary">摘要: 以后讲解知识点，将利用XMind配合讲解，本篇博客主要介绍XMind怎么使用下载地址：https://www.xmind.cn/xmind8-pro/看懂以下这个思维导图，就能灵活Xmind常用功能了over.........</span>
+                            <span class="img">
+
+						  		<a href="/blog/articles/390"><img src="./blog/images/20191209093128.png" alt="小李飞刀_开发工具" style="width:666px;height:444px;"></a>
+						  		&nbsp;&nbsp;
+
+					  	</span>
+                            <span class="info">发表于 2019-12-09 09:32 阅读(110) </span>
+
+                        </li>
+                        <hr style="height:5px;border:none;border-top:1px dashed gray;padding-bottom:  10px;" />
+
+                        <li style="margin-bottom: 30px">
+                            <span class="date"><a href="/blog/articles/389">2019年11月25日</a></span>
+                            <span class="title"><a href="/blog/articles/389">高并发常用解决方案汇总</a></span>
+                            <span class="summary">摘要: 1、扩容扩容思路：u 垂直扩容（纵向扩展）：提高系统部件能力u 水平扩容（横向扩展）：增加更多系统成员来实现 数据库扩容：读操作扩展：memcache、redis、CDN等缓存写操作扩展：Cassandra、Hbase2、缓存(1) 浏览器：页面静态化(2) 网络转发：nginx反向代理(3) 应用服务：集群...</span>
+                            <span class="img">
+
+						  		<a href="/blog/articles/389"><img src="./blog/images/20191125104547.png" alt="小李飞刀_解决方案" style="width:666px;height:333px;"></a>
+						  		&nbsp;&nbsp;
+
+						  		<a href="/blog/articles/389"><img src="./blog/images/20191125104621.png" alt="小李飞刀_解决方案" style="width:666px;height:444px;"></a>
+						  		&nbsp;&nbsp;
+
+						  		<a href="/blog/articles/389"><img src="./blog/images/20191125104655.png" alt="小李飞刀_解决方案" style="width:666px;height:333px;"></a>
+						  		&nbsp;&nbsp;
+
+					  	</span>
+                            <span class="info">发表于 2019-11-25 22:48 阅读(174) </span>
+
+                        </li>
+                        <hr style="height:5px;border:none;border-top:1px dashed gray;padding-bottom:  10px;" />
+
+                        <li style="margin-bottom: 30px">
+                            <span class="date"><a href="/blog/articles/388">2019年11月24日</a></span>
+                            <span class="title"><a href="/blog/articles/388">自定义注解结合Aop数据字典应用</a></span>
+                            <span class="summary">摘要: 本篇博客主要聊聊自定义注解在项目中的应用，自定义注解用来做系统监控日志，这个用法已经烂大街了，无法让面试官眼前一亮的感觉。项目开发中数据字典使用场景非常多，使用数据字典有一点非常的不方便，那就是数据库中存放的是数字，而实际页面上展示的却是汉字；那么这也就造成了，每次做页面展示的时候都需要给数字进行转义，将其转...</span>
+                            <span class="img">
+
+						  		<a href="/blog/articles/388"><img src="./blog/images/20191124093914.png" alt="小李飞刀_解决方案" style="width: 666px; height: 222px;"></a>
+						  		&nbsp;&nbsp;
+
+						  		<a href="/blog/articles/388"><img src="./blog/images/20191124094000.png" alt="小李飞刀_解决方案" style="width: 666px; height: 333px;"></a>
+						  		&nbsp;&nbsp;
+
+						  		<a href="/blog/articles/388"><img src="./blog/images/20191125030256.png" alt="小李飞刀_解决方案" style="width: 666px; height: 333px;"></a>
+						  		&nbsp;&nbsp;
+
+					  	</span>
+                            <span class="info">发表于 2019-11-24 09:40 阅读(201) </span>
+
+                        </li>
+                        <hr style="height:5px;border:none;border-top:1px dashed gray;padding-bottom:  10px;" />
+
+                        <li style="margin-bottom: 30px">
+                            <span class="date"><a href="/blog/articles/387">2019年11月23日</a></span>
+                            <span class="title"><a href="/blog/articles/387">RabbitMQ整合SpringCloud</a></span>
+                            <span class="summary">摘要: 注意一点，在发送消息的时候对template进行配置mandatory=true保证监听有效生产端还可以配置其他属性，比如发送重试，超时时间、次数、间隔等  消费端核心配置u 首先配置手工确认模式，用于ACK的手工处理，这样我们可以保证消息的可靠性送达，或者在消费端消费失败的时候可以做到重回队列、根据业务记录...</span>
+                            <span class="img">
+
+						  		<a href="/blog/articles/387"><img src="./blog/images/20191123040143.png" alt="小李飞刀_RabbitMQ" style="width:666px;height:666px;"></a>
+						  		&nbsp;&nbsp;
+
+						  		<a href="/blog/articles/387"><img src="./blog/images/20191123040606.png" alt="小李飞刀_RabbitMQ" style="width:666px;height:333px;"></a>
+						  		&nbsp;&nbsp;
+
+					  	</span>
+                            <span class="info">发表于 2019-11-23 04:06 阅读(122) </span>
+
+                        </li>
+                        <hr style="height:5px;border:none;border-top:1px dashed gray;padding-bottom:  10px;" />
+
+                        <li style="margin-bottom: 30px">
+                            <span class="date"><a href="/blog/articles/386">2019年11月20日</a></span>
+                            <span class="title"><a href="/blog/articles/386">RabbitMQ消息模式（TTL消息、死信队列）</a></span>
+                            <span class="summary">摘要: TTLTTL是Time To Live的缩写，也就是生存时间RabbitMQ支持消息的过期时间，在消息发送时可以进行指定RabbitMQ支持队列的过期时间，从消息入队列开始计算，只要超过了队列的超时时间配置，那么消息自动的清除  纯控制台操作（演示TTL队列消息特点）针对队列，只要是这个队列的消息，就只有这么...</span>
+                            <span class="img">
+
+						  		<a href="/blog/articles/386"><img src="./blog/images/20191120032134.png" alt="小李飞刀_RabbitMQ" style="width:666px;height:555px;"></a>
+						  		&nbsp;&nbsp;
+
+					  	</span>
+                            <span class="info">发表于 2019-11-20 03:23 阅读(99) </span>
+
+                        </li>
+                        <hr style="height:5px;border:none;border-top:1px dashed gray;padding-bottom:  10px;" />
+
+                        <li style="margin-bottom: 30px">
+                            <span class="date"><a href="/blog/articles/385">2019年11月20日</a></span>
+                            <span class="title"><a href="/blog/articles/385">RabbitMQ消息模式（消息的ACK与重回队列）</a></span>
+                            <span class="summary">摘要: 消费端手工ACK与NACK消费端进行消费的时候，如果由于业务异常我们可以进行日志的记录，然后进行补偿如果由于服务器宕机等严重问题，那么我们就需要手工进行ACK，保障消费端消费成功！  消费端的重回队列消费端重回队列是为了对没有处理成功的消息，把消息重新回递给Broker！一般我们在实际应用中，都会关闭重回队列...</span>
+                            <span class="img">
+
+					  	</span>
+                            <span class="info">发表于 2019-11-20 03:18 阅读(84) </span>
+
+                        </li>
+                        <hr style="height:5px;border:none;border-top:1px dashed gray;padding-bottom:  10px;" />
+
+                        <li style="margin-bottom: 30px">
+                            <span class="date"><a href="/blog/articles/384">2019年11月20日</a></span>
+                            <span class="title"><a href="/blog/articles/384">RabbitMQ消息模式之消费端限流</a></span>
+                            <span class="summary">摘要: 什么是消费端的限流？假设一个场景，首先，我们RabbitMQ服务器有上万条未处理的消息，我们随便打开一个消费者客户端，会出现下面情况：巨量的消息瞬间全部推送过来，但是我们单个客户端无法同时处理这么多数据！  消费端限流RabbitMQ提供的解决方案RabbitMQ提供了一种qos（服务质量保证）功能，即在非自...</span>
+                            <span class="img">
+
+					  	</span>
+                            <span class="info">发表于 2019-11-20 03:16 阅读(108) </span>
+
+                        </li>
+                        <hr style="height:5px;border:none;border-top:1px dashed gray;padding-bottom:  10px;" />
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <div>
+                <nav>
+                    <ul class="pagination pagination-sm">
+                        <form id='pageBeanForm' action="javascript:alert('完善中')" method='post'><input type='hidden' name='page'></form>
+                        <li><a href='javascript:gotoPage(1)'>首页</a></li>
+                        <li class='disabled'><a href='javascript:gotoPage(1)'>上一页</a></li>
+                        <li class='active'><a href="javascript:alert('完善中')">1</a></li>
+                        <li><a href='javascript:gotoPage(2)'>2</a></li>
+                        <li><a href='javascript:gotoPage(3)'>3</a></li>
+                        <li><a href='javascript:gotoPage(2)'>下一页</a></li>
+                        <li><a href='javascript:gotoPage(38)'>尾页</a></li>
+                        <script type='text/javascript'>
+                            function gotoPage(page) {
+                                document.getElementById('pageBeanForm').page.value = page;
+                                document.getElementById('pageBeanForm').submit();
+                            }
+                            function skipPage() {
+                                var page = document.getElementById('skipPage').value;
+                                if(!page || isNaN(page) || parseInt(page)<1 || parseInt(page)>38){
+                                    alert('请输入1~N的数字');
+                                    return;
+                                }
+                                gotoPage(page);
+                            }</script>
+
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div align="center" style="padding: 20px">
+                <p align="center">备案号：<a href="http://www.beian.miit.gov.cn" target="_blank">湘ICP备19000029号</a></p>
+                <p align="center"> Copyright © 2018-2019 javaxl晓码阁 版权所有</p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>

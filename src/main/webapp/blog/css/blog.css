@@ -86,8 +86,8 @@
 
 .data_list .user_image img{
 	padding-top:10px;
-	width: 200px;;
-	height: 250px;;
+	width: 200px;
+	height: auto;
 }
 
 .data_list .nickName , .data_list .userSign{
@@ -172,4 +172,32 @@
 
 .data_list .search{
 	padding: 5px;
+}
+.user{
+	float: right;
+}
+.bar-btn{
+	position: absolute;
+	z-index: 999;
+	width: 50px;
+	height: 50px;
+	background-color: #9F9F9F;
+	opacity: .95;
+	border: none;
+	cursor: pointer;
+}
+.bar-btn span{
+	color: #fff;
+	font-size: 25px;
+}
+@media screen and (max-width: 767px){
+	#bs-example-navbar-collapse-2 {
+		position: absolute;
+		z-index: 998;
+		opacity: 0.95;
+	}
+}
+.data_list_cus{
+	background-color:#888;
+	overflow-y: hidden;
 }
