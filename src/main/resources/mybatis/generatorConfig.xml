@@ -52,7 +52,7 @@
         <!--<table schema="" tableName="sys_menu"></table>-->
 <!--        <table schema="" tableName="sys_role_permission"></table>-->
         <table schema="" tableName="blog_main"></table>
-        <table schema="" tableName="blog_main_auth"></table>
-        <table schema="" tableName="blog_main_cate"></table>
+<!--        <table schema="" tableName="blog_main_auth"></table>-->
+<!--        <table schema="" tableName="blog_main_cate"></table>-->
     </context>
 </generatorConfiguration>

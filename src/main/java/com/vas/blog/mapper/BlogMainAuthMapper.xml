@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vas.blog.mapper.BlogMainAuthMapper">
+  <resultMap id="BaseResultMap" type="com.vas.blog.pojo.BlogMainAuth">
+    <result column="fd_user_id" jdbcType="VARCHAR" property="fdUserId" />
+    <result column="fd_doc_id" jdbcType="VARCHAR" property="fdDocId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.vas.blog.pojo.BlogMainAuth">
+    insert into blog_main_auth (fd_user_id, fd_doc_id)
+    values (#{fdUserId,jdbcType=VARCHAR}, #{fdDocId,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select fd_user_id, fd_doc_id
+    from blog_main_auth
+  </select>
+</mapper>

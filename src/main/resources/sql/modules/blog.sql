@@ -8,6 +8,7 @@ create table blog_main
    doc_subject          varchar(100)                COMMENT '博客标题',
    fd_content           mediumint                   COMMENT '博客内容',
    fd_cate_id           varchar(32)                 COMMENT '所属分类',
+   fd_publish 			varchar(1)    DEFAULT '0'   COMMENT '是否审核通过，1：通过，0未通过',
    doc_order            bigint(30)    DEFAULT NULL  COMMENT '内部排序',
    doc_creator_id       varchar(32)   NOT NULL      COMMENT '创建者ID',
    doc_alteror_id       varchar(32)   NOT NULL      COMMENT '修改者ID',
