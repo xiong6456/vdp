@@ -173,11 +173,21 @@
 .data_list .search{
 	padding: 5px;
 }
+.user a{
+	float: left;
+}
 .user{
 	float: right;
 }
+.abort-site{
+	float: left;
+}
+.col-md-3{
+	background-color: #fff;
+	transition: background-color 0.5s ease;
+}
 .bar-btn{
-	position: absolute;
+	position: fixed;
 	z-index: 999;
 	width: 50px;
 	height: 50px;
@@ -191,13 +201,34 @@
 	font-size: 25px;
 }
 @media screen and (max-width: 767px){
-	#bs-example-navbar-collapse-2 {
+	.col-md-3 {
 		position: absolute;
 		z-index: 998;
 		opacity: 0.95;
+		left: -998px;
 	}
+}
+.col-md-3-show {
+	left:0px;
+	transition: left 0.5s ease;
 }
 .data_list_cus{
 	background-color:#888;
+}
+.body-scoll {
 	overflow-y: hidden;
+}
+.data_list_title{
+	position:relative;
+}
+.send-blog{
+	position: fixed;
+	right: 30px;
+	top: 85px;
+}
+@media screen and (max-width: 767px){
+	.send-blog{
+		right: 15px;
+		top: 75px;
+	}
 }

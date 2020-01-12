@@ -56,10 +56,16 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-
-                            <li><a href="/abortMe" target="_blank"><b color="black"><strong>关于本站</strong></b></a></li>
-
+                            <li class="abort-site">
+                                <a href="/abortMe" target="_blank"><b color="black"><strong>关于本站</strong></b></a>
+                            </li>
+                            <li class="user">
+                                <a href="login.html" target="_blank"><b color="black"><strong>登录</strong></b></a>
+                                <a href="/abortMe" target="_blank"><b color="black"><strong>注册</strong></b></a>
+                            </li>
                         </ul>
+
+
                         <form action="javascript:alert('开发中~~~')" class="navbar-form navbar-right" role="search" method="post" onsubmit="return checkData()">
                             <div class="form-group">
                                 <input type="text" id="q" name="q" value="" class="form-control" placeholder="请输入要查询的关键字...">
@@ -67,10 +73,6 @@
                             <button type="submit" class="btn btn-default" >搜索</button>
                         </form>
 
-                        <ul class="nav navbar-nav user">
-                            <li><a href="login.html" target="_blank"><b color="black"><strong>登录</strong></b></a></li>
-                            <li><a href="/abortMe" target="_blank"><b color="black"><strong>注册</strong></b></a></li>
-                        </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
             </nav>
@@ -79,12 +81,12 @@
 
 
     <div class="row" style="margin-top: 50px;">
-            <button type="button" class="bar-btn navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" chg-target="#data_list" aria-expanded="false">
+            <button type="button" class="bar-btn navbar-toggle collapsed" data-toggle="collapse"  chg-target="#data_list" aria-expanded="false">
                 <span class="glyphicon glyphicon-menu-right"></span>
             </button>
 
         <!-- 左侧布局 -->
-        <div class="col-md-3 collapse navbar-collapse out" id="bs-example-navbar-collapse-2">
+        <div class="col-md-3">
             <div class="data_list">
                 <div class="data_list_title">
 
@@ -224,8 +226,14 @@
         <div class="col-md-9">
             <div class="data_list" id="data_list">
                 <div class="data_list_title">
-                    <img src="./blog/images/list_icon.png"/>
-                    最新博客</div>
+                    <div>
+                        <img src="./blog/images/list_icon.png"/>
+                        <span>最新博客</span>
+                    </div>
+                    <div class="send-blog">
+                        <button class="glyphicon glyphicon-pencil btn btn-default">发博文</button>
+                    </div>
+                </div>
 
                 <div class="datas">
                     <ul>
