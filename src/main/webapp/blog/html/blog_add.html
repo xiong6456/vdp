@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>发博客</title>
+    <link rel="stylesheet" href="../../resource/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resource/bootstrap/css/buttons.css">
+    <link rel="stylesheet" href="../css/blog_add.css">
+</head>
+<body>
+<div class="blogEditorWrap">
+<h1>发博文</h1>
+<form action="../../blog/add" method="post">
+    <div class="form-group">
+        <input type="text" name="docSubject" value="" class="form-control" placeholder="请输入标题">
+    </div>
+        <textarea name="fdContent" id="editor">
+        </textarea>
+    <br>
+    <button type="submit" class="button button-pill" value="Submit">提交</button>
+
+</form>
+</div>
+<script src="../../resource/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'editor' );
+</script>
+</body>
+</html>
