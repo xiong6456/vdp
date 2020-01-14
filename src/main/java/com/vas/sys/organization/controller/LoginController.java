@@ -10,6 +10,7 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.util.SavedRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,23 +67,25 @@ public class LoginController {
             // 查询菜单
 
             jsonObject.put("loginRes", "success");
+            SavedRequest savedRequest = WebUtils.getSavedRequest(request);
+            //登录前地址
+            if(savedRequest != null) {
+                jsonObject.put("loginAds", savedRequest.getRequestUrl());
+            }else{
+                jsonObject.put("loginAds", "index.html");
+            }
             //return "/index";
         } catch (UnknownAccountException u) {
             jsonObject.put("loginRes", "用户名不存在！");
-            //subject.getSession().setAttribute("loginRes", "用户名不存在！");
         } catch (IncorrectCredentialsException i) {
             jsonObject.put("loginRes", "密码错误！");
-            //subject.getSession().setAttribute("loginRes", "密码错误！");
         } catch (LockedAccountException u) {
             jsonObject.put("loginRes", "帐户已锁，请联系管理员！");
-            //subject.getSession().setAttribute("loginRes", "帐户已锁，请联系管理员！");
         } catch (Exception e) {
             jsonObject.put("loginRes", "登录异常！");
             logger.error("======登陆异常=======" + e.getMessage());
-            //subject.getSession().setAttribute("loginRes", "登录异常！");
         }
         return jsonObject.toString();
-        //	return "redirect:/login.html";
     }
 
     @RequestMapping("/exit")

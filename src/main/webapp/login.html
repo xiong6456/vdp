@@ -114,7 +114,8 @@
                 if('success' != tData.loginRes){
                     layer.msg(tData.loginRes,{time:1000});
                 } else {
-                    window.location.href="index.html";
+                    alert(tData.loginAds)
+                    window.location.href=tData.loginAds;
                 }
             },
             error:function(e){
