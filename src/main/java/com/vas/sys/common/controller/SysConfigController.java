@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  */
 @Controller
-@RequestMapping("/sysConfig")
+@RequestMapping("/sys/config")
 public class SysConfigController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(SysConfigController.class);

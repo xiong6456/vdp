@@ -4,10 +4,13 @@
   <resultMap id="BaseResultMap" type="com.vas.sys.common.pojo.SysConfig" >
     <id column="fd_id" property="fdId" jdbcType="VARCHAR" />
     <result column="fd_type" property="fdType" jdbcType="VARCHAR" />
-    <result column="fd_locked" property="fdLocked" jdbcType="VARCHAR" />
     <result column="fd_value" property="fdValue" jdbcType="VARCHAR" />
     <result column="fd_bak_1" property="fdBak1" jdbcType="VARCHAR" />
     <result column="fd_bak_2" property="fdBak2" jdbcType="VARCHAR" />
+    <result column="doc_creator_id" jdbcType="VARCHAR" property="docCreatorId" />
+    <result column="doc_alteror_id" jdbcType="VARCHAR" property="docAlterorId" />
+    <result column="doc_create_time" jdbcType="TIMESTAMP" property="docCreateTime" />
+    <result column="doc_alter_time" jdbcType="TIMESTAMP" property="docAlterTime" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -81,88 +84,15 @@
     where fd_id = #{fdId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.vas.sys.common.pojo.SysConfig" >
-    insert into sys_config (fd_id, fd_locked, fd_type, fd_value,
-      fd_bak_1, fd_bak_2)
-    values (#{fdId,jdbcType=VARCHAR}, #{fdLocked,jdbcType=VARCHAR}, #{fdType,jdbcType=VARCHAR}, #{fdValue,jdbcType=VARCHAR},
-      #{fdBak1,jdbcType=VARCHAR}, #{fdBak2,jdbcType=VARCHAR})
+    insert into sys_config (fd_id, fd_type, fd_value,
+      fd_bak_1, fd_bak_2,doc_creator_id,doc_alteror_id,doc_create_time,doc_alter_time)
+    values (#{fdId,jdbcType=VARCHAR}, #{fdType,jdbcType=VARCHAR}, #{fdValue,jdbcType=VARCHAR},
+      #{fdBak1,jdbcType=VARCHAR}, #{fdBak2,jdbcType=VARCHAR}, #{docCreatorId,jdbcType=VARCHAR}, #{docAlterorId,jdbcType=VARCHAR},
+      #{docCreateTime,jdbcType=VARCHAR}, #{docAlterTime,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.vas.sys.common.pojo.SysConfig" >
-    insert into sys_config
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="fdId != null" >
-        fd_id,
-      </if>
-      <if test="fdType != null" >
-        fd_type,
-      </if>
-      <if test="fdValue != null" >
-        fd_value,
-      </if>
-      <if test="fdBak1 != null" >
-        fd_bak_1,
-      </if>
-      <if test="fdBak2 != null" >
-        fd_bak_2,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="fdId != null" >
-        #{fdId,jdbcType=VARCHAR},
-      </if>
-      <if test="fdType != null" >
-        #{fdType,jdbcType=VARCHAR},
-      </if>
-      <if test="fdValue != null" >
-        #{fdValue,jdbcType=VARCHAR},
-      </if>
-      <if test="fdBak1 != null" >
-        #{fdBak1,jdbcType=VARCHAR},
-      </if>
-      <if test="fdBak2 != null" >
-        #{fdBak2,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update sys_config
-    <set >
-      <if test="record.fdId != null" >
-        fd_id = #{record.fdId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fdType != null" >
-        fd_type = #{record.fdType,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fdValue != null" >
-        fd_value = #{record.fdValue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fdBak1 != null" >
-        fd_bak_1 = #{record.fdBak1,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fdBak2 != null" >
-        fd_bak_2 = #{record.fdBak2,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update sys_config
-    set fd_id = #{record.fdId,jdbcType=VARCHAR},
-      fd_type = #{record.fdType,jdbcType=VARCHAR},
-      fd_value = #{record.fdValue,jdbcType=VARCHAR},
-      fd_bak_1 = #{record.fdBak1,jdbcType=VARCHAR},
-      fd_bak_2 = #{record.fdBak2,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.vas.sys.common.pojo.SysConfig" >
     update sys_config
     <set >
-      <if test="fdLocked != null" >
-        fd_locked = #{fdLocked,jdbcType=VARCHAR},
-      </if>
       <if test="fdType != null" >
         fd_type = #{fdType,jdbcType=VARCHAR},
       </if>
@@ -175,28 +105,29 @@
       <if test="fdBak2 != null" >
         fd_bak_2 = #{fdBak2,jdbcType=VARCHAR},
       </if>
+      <if test="docCreatorId != null" >
+        doc_creator_id = #{docCreatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="docAlterorId != null" >
+        doc_alteror_id = #{docAlterorId,jdbcType=VARCHAR},
+      </if>
+      <if test="docCreateTime != null" >
+        doc_create_time = #{docCreateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="docAlterTime != null" >
+        doc_alter_time = #{docAlterTime,jdbcType=VARCHAR},
+      </if>
     </set>
     where fd_id = #{fdId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.vas.sys.common.pojo.SysConfig" >
-    update sys_config
-    set fd_type = #{fdType,jdbcType=VARCHAR},
-      fd_value = #{fdValue,jdbcType=VARCHAR},
-      fd_bak_1 = #{fdBak1,jdbcType=VARCHAR},
-      fd_bak_2 = #{fdBak2,jdbcType=VARCHAR}
-    where fd_id = #{fdId,jdbcType=VARCHAR}
-  </update>
+
+  <select id="getValueByType" parameterType="java.lang.String"
+          resultType="java.lang.String">
+		SELECT fd_value FROM sys_config where fd_type=#{fdType,jdbcType=VARCHAR} ORDER BY fd_bak_1 desc limit 1
+	</select>
   
-   <insert id="insertInfoBatch" parameterType="java.util.List">  
-	    insert into sys_config (fd_id, fd_type, fd_value,fd_bak_1)  
-	    values  
-	    <foreach collection="list" item="item" index="index" separator=",">  
-	      (#{item.fdId}, #{item.fdType}, #{item.fdValue}, #{item.fdBak1})
-	    </foreach>
-	</insert>
-  
-   <select id="getValueByType" parameterType="java.lang.String"
-		resultType="java.lang.String">
-		SELECT fd_value FROM sys_config where fd_type=#{fdType,jdbcType=VARCHAR} ORDER BY fd_bak_1 desc limit 1 
+   <select id="selectConfigByType" parameterType="java.lang.String"
+           resultMap="BaseResultMap">
+		SELECT * FROM sys_config where fd_type=#{fdType,jdbcType=VARCHAR}
 	</select>
 </mapper>

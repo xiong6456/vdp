@@ -1,9 +1,6 @@
 package com.vas.sys.common.pojo;
 
 public class SysConfig extends BasePojo {
-    private String fdId;
-
-    private String fdLocked;
 
     private String fdType;
 
@@ -12,14 +9,6 @@ public class SysConfig extends BasePojo {
     private String fdBak1;
 
     private String fdBak2;
-
-    public String getFdId() {
-        return fdId;
-    }
-
-    public void setFdId(String fdId) {
-        this.fdId = fdId == null ? null : fdId.trim();
-    }
 
     public String getFdType() {
         return fdType;
@@ -53,11 +42,4 @@ public class SysConfig extends BasePojo {
         this.fdBak2 = fdBak2 == null ? null : fdBak2.trim();
     }
 
-    public String getFdLocked() {
-        return fdLocked;
-    }
-
-    public void setFdLocked(String fdLocked) {
-        this.fdLocked = fdLocked;
-    }
 }

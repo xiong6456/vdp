@@ -3,6 +3,7 @@ package com.vas.sys.common.service.impl;
 import com.vas.sys.common.mapper.SysConfigMapper;
 import com.vas.sys.common.pojo.SysConfig;
 import com.vas.sys.common.service.SysConfigService;
+import com.vas.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
@@ -25,7 +26,12 @@ public class SysConfigServiceImpl implements SysConfigService {
 
 	@Override
 	public int update(SysConfig config) {
-		return sysConfigMapper.updateByPrimaryKeySelective(config);
+		SysConfig configRtn = sysConfigMapper.selectConfigByType(config.getFdType());
+		if(configRtn == null){
+			return sysConfigMapper.insert(config);
+		}
+		configRtn.setFdValue(config.getFdValue());
+		return sysConfigMapper.updateByPrimaryKeySelective(configRtn);
 	}
 
 	@Override

@@ -17,8 +17,8 @@ public interface SysConfigMapper {
     int updateByPrimaryKeySelective(SysConfig record);
 
     int updateByPrimaryKey(SysConfig record);
-    
-    int insertInfoBatch(List<SysConfig> sysConfigs);
+
+    SysConfig selectConfigByType(String fdType);
     
     String getValueByType(String fdType);
 }
