@@ -45,7 +45,7 @@
     <!-- dom版本号 -->
     <jdom.version>2.0.2</jdom.version>
     <!-- quartz版本号 -->
-    <quartz.version>2.3.0</quartz.version>
+    <quartz.version>2.3.2</quartz.version>
     <!--mybatis分页插件-->
     <pagehelper.version>5.1.2</pagehelper.version>
     <jsqlparser.version>0.9.1</jsqlparser.version>
