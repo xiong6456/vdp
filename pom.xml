@@ -19,7 +19,7 @@
     <slf4j.version>1.7.5</slf4j.version>
     <log4j.version>1.2.12</log4j.version>
     <!-- junit版本号 -->
-    <junit.version>4.11</junit.version>
+    <junit.version>4.13.1</junit.version>
     <!-- javax版本号 -->
     <javax.version>7.0</javax.version>
     <!-- mybatis版本号 -->
