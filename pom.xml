@@ -23,7 +23,7 @@
     <!-- javax版本号 -->
     <javax.version>7.0</javax.version>
     <!-- mybatis版本号 -->
-    <mybatis.version>3.2.1</mybatis.version>
+    <mybatis.version>3.5.6</mybatis.version>
     <!-- json版本号 -->
     <jackson.version>2.7.4</jackson.version>
     <jsp.version>2.2</jsp.version>
