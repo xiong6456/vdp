@@ -39,7 +39,7 @@
     <poi.version>3.16</poi.version>
     <poi-ooxml.version>3.16</poi-ooxml.version>
     <!-- shiro版本号 -->
-    <shiro.version>1.2.4</shiro.version>
+    <shiro.version>1.8.0</shiro.version>
     <shiro-spring.version>1.2.4</shiro-spring.version>
     <shiro-ehcache.version>1.2.4</shiro-ehcache.version>
     <!-- dom版本号 -->
