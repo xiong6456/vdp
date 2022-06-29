@@ -36,7 +36,7 @@
     <!-- mysql版本号 -->
     <mysql.version>5.1.32</mysql.version>
     <!-- EXCEL导入版本号 -->
-    <poi.version>3.16</poi.version>
+    <poi.version>4.1.1</poi.version>
     <poi-ooxml.version>3.16</poi-ooxml.version>
     <!-- shiro版本号 -->
     <shiro.version>1.2.4</shiro.version>
